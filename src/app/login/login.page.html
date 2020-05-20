@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Pontuario Eletronico Dental</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-item>
+  <ion-label stacked>Email</ion-label>
+  <ion-input [(ngModel)]="username"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label stacked>Senha</ion-label>
+  <ion-input type="password" [(ngModel)]="password"></ion-input>
+</ion-item>
+
+<div text-center margin-top>
+  <ion-button color="primary" expand="block"  (click)="signUp()">
+   Entrar
+  </ion-button>
+
+</div>
