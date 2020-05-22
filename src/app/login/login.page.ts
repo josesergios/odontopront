@@ -21,18 +21,19 @@ import { HttpClient, HttpParams } from '@angular/common/http';
     }
 
     login(){
-     let url="http://localhost:8000";
-     let data= {email:"user@odontopront.io", senha:"12345678"};
-     const requestOptions = {
-      headers: {
-        'Content-Type': 'application/json',
-        'Cache-Control': 'no-cache, private'
-      },
-      params: new HttpParams()
-    };
-    
-     this.httpService.post( url+'/login', data, requestOptions).toPromise().then(res => {
-       console.log("RESPOSTA", res);
-     });
+      let url="http://localhost:8000";
+      let data= {email:"user@odontopront.io", password:"12345678"};
+
+      const requestOptions = {
+        headers: {
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-cache, private'
+        },
+        params: new HttpParams()
+      };
+
+      this.httpService.post( url+'/login', data, requestOptions).toPromise().then(res => {
+        console.log("RESPOSTA", res);
+      });
     }
 }
