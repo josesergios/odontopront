@@ -1,0 +1,23 @@
+<ion-content padding center text-center>
+  <div id="container">
+    <ion-text color="dark" center>
+      <h3><b> OdontoPront</b></h3>
+      <p>
+         Ola, informe seu e-mail e lhe enviaremos uma nova senha:
+      </p>
+    </ion-text>
+ 
+
+    <ion-item>
+       <ion-label position="stacked">Email:</ion-label>
+       <ion-input [(ngModel)]="email"></ion-input>
+    </ion-item>
+
+    <ion-button color="primary" expand="block"  >
+        Redefinir senha
+    </ion-button>
+    <p class="go-to-login" color="warning">
+      Volta para o Login? <a (click)="goTologinPage()" color="warning">Clique aqui</a>
+    </p>
+  </div>  
+</ion-content>

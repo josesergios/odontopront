@@ -4,6 +4,7 @@ import { NavController } from '@ionic/angular';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -12,7 +13,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 
   export class LoginPage implements OnInit {
     public itens:any;
-    constructor(private httpService: HttpClient) {
+    constructor(private httpService: HttpClient, private navCtrl: NavController) {
     }
   
     logindata:any ={};
@@ -35,5 +36,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
       this.httpService.post( url+'/login', data, requestOptions).toPromise().then(res => {
         console.log("RESPOSTA", res);
       });
+    }
+
+    goTosenhaPage(){
+      this.navCtrl.navigateForward('/register');
     }
 }

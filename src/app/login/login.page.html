@@ -1,22 +1,27 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Pontuario Eletronico Dental</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content padding center text-center>
+  <div id="container">
+    <ion-text color="dark" center>
+      <h3><b> OdontoPront</b></h3>
+      <p>
+         Ola, informe seu e-mail e senha para entrar a plataforma:
+      </p>
+    </ion-text>
+ 
 
-<ion-item>
-  <ion-label stacked>Email</ion-label>
-  <ion-input [(ngModel)]="username"></ion-input>
-</ion-item>
+    <ion-item>
+       <ion-label position="stacked">Email:</ion-label>
+       <ion-input [(ngModel)]="email"></ion-input>
+    </ion-item>
 
-<ion-item>
-  <ion-label stacked>Senha</ion-label>
-  <ion-input type="password" [(ngModel)]="password"></ion-input>
-</ion-item>
+    <ion-item>
+      <ion-label position="stacked" >Password:</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
 
-<div text-center margin-top>
-  <ion-button color="primary" expand="block"  (click)="login()">
-   Entrar
-  </ion-button>
-
-</div>
+    <ion-button color="primary" expand="block"  (click)="login()">
+        entrar
+    </ion-button>
+    <p>Esqueceu a senha? <a (click)="goTosenhaPage()">Clique aqui</a>
+    </p>
+  </div>  
+</ion-content>
