@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="goToBack()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Adicionar Usuário</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h4 class="ion-margin-start">Informações gerais</h4>
+
+  <ion-item class="ion-margin-bottom">
+    <ion-label position="stacked">Nome completo:</ion-label>
+    <ion-input [(ngModel)]="form.name"></ion-input>
+  </ion-item>
+
+  <ion-item class="ion-margin-bottom">
+    <ion-label position="stacked">Email:</ion-label>
+    <ion-input [(ngModel)]="form.email"></ion-input>
+  </ion-item>
+
+  <ion-item class="ion-margin-bottom">
+    <ion-label position="stacked">Código:</ion-label>
+    <ion-input [(ngModel)]="form.code"></ion-input>
+  </ion-item>
+
+  <ion-item class="ion-margin-bottom">
+    <ion-label position="stacked">Telefone:</ion-label>
+    <ion-input [(ngModel)]="form.phone"></ion-input>
+  </ion-item>
+
+  <ion-item class="ion-margin-bottom">
+    <ion-label position="stacked">Tipo:</ion-label>
+    <ion-select interface="action-sheet" [(ngModel)]="form.type">
+      <ion-select-option value="admin">Administrador</ion-select-option>
+      <ion-select-option value="teacher">Professor</ion-select-option>
+      <ion-select-option value="student">Aluno</ion-select-option>
+    </ion-select>
+  </ion-item>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button color="primary" expand="block" (click)="submit()">
+      Salvar
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
+
