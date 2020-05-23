@@ -15,9 +15,14 @@ const routes: Routes = [
   {
     path: 'cadastro',
     loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule)
-  },  {
+  },
+  {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'patients-list',
+    loadChildren: () => import('./patients/list/list.module').then( m => m.ListPageModule)
   },
 
 ];

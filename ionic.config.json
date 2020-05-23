@@ -1,5 +1,7 @@
 {
   "name": "odontopront",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

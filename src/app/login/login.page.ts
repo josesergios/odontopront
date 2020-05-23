@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
-
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-login',
@@ -11,34 +12,50 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   styleUrls: ['./login.page.scss'],
 })
 
-  export class LoginPage implements OnInit {
-    public itens:any;
-    constructor(private httpService: HttpClient, private navCtrl: NavController) {
-    }
-  
-    logindata:any ={};
-  
-    ngOnInit() {
-    }
+export class LoginPage implements OnInit {
+  credentials = {
+    email: "user@odontopront.io",
+    password: "12345678"
+  }
 
-    login(){
-      let url="http://localhost:8000";
-      let data= {email:"user@odontopront.io", password:"12345678"};
+  constructor(
+    private httpService: HttpClient,
+    private navCtrl: NavController,
+    public alertController: AlertController,
+    private storage: Storage,
+    private router: Router) {
+  }
 
-      const requestOptions = {
-        headers: {
-          'Content-Type': 'application/json',
-          'Cache-Control': 'no-cache, private'
-        },
-        params: new HttpParams()
-      };
+  ngOnInit() { }
 
-      this.httpService.post( url+'/login', data, requestOptions).toPromise().then(res => {
-        console.log("RESPOSTA", res);
-      });
-    }
+  login(){
+    let vm = this;
 
-    goTosenhaPage(){
-      this.navCtrl.navigateForward('/register');
-    }
+    const requestOptions = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Cache-Control': 'no-cache, private'
+      },
+      params: new HttpParams()
+    };
+
+    this.httpService
+        .post(environment.baseurl + '/login', this.credentials, requestOptions).toPromise()
+        .then(respose => {
+          vm.storage.set('auth.user', respose.user);
+          vm.storage.set('auth.token', respose.token);
+
+          vm.router.navigateByUrl('/patients-list');
+        }).catch(error => {
+          const alert = vm.alertController.create({
+            header: 'Erro de autenticação',
+            message: 'Ocorreu um erro ao realizar o login, favor verificar os dados de acesso e tentar novamente.',
+            buttons: ['OK']
+          });
+        });
+  }
+
+  goTosenhaPage(){
+    this.navCtrl.navigateForward('/register');
+  }
 }

@@ -1,27 +1,26 @@
-<ion-content padding center text-center>
+<ion-content center>
   <div id="container">
-    <ion-text color="dark" center>
-      <h3><b> OdontoPront</b></h3>
+    <ion-text color="dark">
+      <h3>OdontoPront</h3>
       <p>
-         Ola, informe seu e-mail e senha para entrar a plataforma:
+         Olá, informe seu e-mail e senha para entrar na plataforma:
       </p>
     </ion-text>
- 
 
-    <ion-item>
+    <ion-item class="ion-no-padding">
        <ion-label position="stacked">Email:</ion-label>
-       <ion-input [(ngModel)]="email"></ion-input>
+       <ion-input [(ngModel)]="credentials.email"></ion-input>
     </ion-item>
 
-    <ion-item>
+    <ion-item class="ion-no-padding">
       <ion-label position="stacked" >Password:</ion-label>
-      <ion-input type="password" [(ngModel)]="password"></ion-input>
+      <ion-input type="password" [(ngModel)]="credentials.password"></ion-input>
     </ion-item>
 
-    <ion-button color="primary" expand="block"  (click)="login()">
+    <ion-button color="primary" expand="block"  (click)="login()" class="ion-margin-top">
         entrar
     </ion-button>
-    <p>Esqueceu a senha? <a (click)="goTosenhaPage()">Clique aqui</a>
+    <p class="ion-text-center ion-margin-top">Esqueceu a senha? <a (click)="goTosenhaPage()">Clique aqui</a>
     </p>
   </div>  
 </ion-content>
