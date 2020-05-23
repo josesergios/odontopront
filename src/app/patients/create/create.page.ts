@@ -18,35 +18,35 @@ export class CreatePage implements OnInit {
   ];
 
   form = {
-    name: "José da Silva",
-    document: "123456789",
-    birth_date: "1980-01-01",
-    gender: "male",
-    skin_color: "brown",
-    birth_city: "Feira de Santana",
-    birth_uf: "BA",
-    marital_status: "married",
-    mobile:"75 99988-7766",
-    ocupation: "Analista de Sistemas",
+    name: "",
+    document: "",
+    birth_date: "",
+    gender: null,
+    skin_color: null,
+    birth_city: "",
+    birth_uf: null,
+    marital_status: null,
+    mobile:"",
+    occupation: "",
     address: {
-      street: "Av. Artemia Pires de Freitas",
-      number: "12345",
+      street: "",
+      number: "",
       complement: "",
-      neighborhood: "SIM",
-      city: "Feira de Santana",
-      uf: "BA",
-      postcode: "44085-000",
-      phone: "75 3625-8899"
+      neighborhood: "",
+      city: "",
+      uf: null,
+      postcode: "",
+      phone: ""
     },
     commercial_address: {
-      street: "Av. Artemia Pires de Freitas",
-      number: "12345",
+      street: "",
+      number: "",
       complement: "",
-      neighborhood: "SIM",
-      city: "Feira de Santana",
-      uf: "BA",
-      postcode: "44085-000",
-      phone: "75 3625-8899"
+      neighborhood: "",
+      city: "",
+      uf: null,
+      postcode: "",
+      phone: ""
     }
   }
 
