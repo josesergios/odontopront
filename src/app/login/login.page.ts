@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { NavController } from '@ionic/angular';
+import { NavController, AlertController } from '@ionic/angular';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { StorageService, LOCAL_STORAGE } from 'ngx-webstorage-service';
 
 
 @Component({
@@ -11,34 +13,47 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   styleUrls: ['./login.page.scss'],
 })
 
-  export class LoginPage implements OnInit {
-    public itens:any;
-    constructor(private httpService: HttpClient, private navCtrl: NavController) {
-    }
-  
-    logindata:any ={};
-  
-    ngOnInit() {
-    }
+@Injectable()
+export class LoginPage implements OnInit {
+  credentials = {
+    email: "user@odontopront.io",
+    password: "12345678"
+  }
 
-    login(){
-      let url="http://localhost:8000";
-      let data= {email:"user@odontopront.io", password:"12345678"};
+  constructor(
+    private httpService: HttpClient,
+    private navCtrl: NavController,
+    public alertController: AlertController,
+    private router: Router,
+    @Inject(LOCAL_STORAGE) private storage: StorageService) {
+  }
 
-      const requestOptions = {
-        headers: {
-          'Content-Type': 'application/json',
-          'Cache-Control': 'no-cache, private'
-        },
-        params: new HttpParams()
-      };
+  ngOnInit() { }
 
-      this.httpService.post( url+'/login', data, requestOptions).toPromise().then(res => {
-        console.log("RESPOSTA", res);
-      });
-    }
+  login(){
+    const requestOptions = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Cache-Control': 'no-cache, private'
+      },
+      params: new HttpParams()
+    };
 
-    goTosenhaPage(){
-      this.navCtrl.navigateForward('/register');
-    }
+    this.httpService
+        .post(environment.baseurl + '/login', this.credentials, requestOptions).toPromise()
+        .then(respose => {
+          // @ts-ignore
+          this.storage.set('auth.user', respose.user);
+          // @ts-ignore
+          this.storage.set('auth.token', respose.token);
+
+          this.router.navigateByUrl('/patients-list');
+        }).catch(error => {
+          window.alert('Ocorreu um erro ao realizar o login, favor verificar os dados de acesso e tentar novamente.')
+        });
+  }
+
+  goTosenhaPage(){
+    this.navCtrl.navigateForward('/register');
+  }
 }

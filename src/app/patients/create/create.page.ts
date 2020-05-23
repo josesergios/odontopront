@@ -84,6 +84,7 @@ export class CreatePage implements OnInit {
     this.httpService
       .post(environment.apiurl + '/patients', this.form, httpOptions).toPromise()
       .then(respose => {
+        // @ts-ignore
         this.router.navigateByUrl('/patients/' + respose.id);
       }).catch(error => {
       window.alert('Ocorreu um erro ao efetuar a operação, favor tentar novamente.')
