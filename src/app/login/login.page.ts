@@ -47,11 +47,7 @@ export class LoginPage implements OnInit {
 
           vm.router.navigateByUrl('/patients-list');
         }).catch(error => {
-          const alert = vm.alertController.create({
-            header: 'Erro de autenticação',
-            message: 'Ocorreu um erro ao realizar o login, favor verificar os dados de acesso e tentar novamente.',
-            buttons: ['OK']
-          });
+          window.alert('Ocorreu um erro ao realizar o login, favor verificar os dados de acesso e tentar novamente.')
         });
   }
 
