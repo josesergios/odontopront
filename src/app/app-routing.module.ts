@@ -29,8 +29,8 @@ const routes: Routes = [
     loadChildren: () => import('./patients/create/create.module').then( m => m.CreatePageModule)
   },
   {
-    path: 'details',
-    loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
+    path: 'patients-details',
+    loadChildren: () => import('./patients/details/details.module').then( m => m.DetailsPageModule)
   },
   {
     path: 'patients-list',

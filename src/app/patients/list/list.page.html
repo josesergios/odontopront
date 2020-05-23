@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button auto-hide="false"></ion-menu-button>
     </ion-buttons>
-    <ion-title class="ion-text-center">Pacientes</ion-title>
+    <ion-title class="ion-text-center" >Pacientes</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="goToCreate()">
         <ion-icon name="add"></ion-icon>
@@ -20,7 +20,7 @@
         <img src="/assets/avatar.jpg">
       </ion-avatar>
       <ion-label>
-        <h2>{{ item.name }}</h2>
+        <h2 (click)="goToDetails()" >{{ item.name }}</h2>
         <p>{{ item.address.city}}, {{ item.address.uf }}</p>
       </ion-label>
     </ion-item>
