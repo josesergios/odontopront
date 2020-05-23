@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
+import { NavController } from '@ionic/angular';
 import { Router } from "@angular/router";
 import { Inject, Injectable } from '@angular/core';
 import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
@@ -16,6 +17,7 @@ export class ListPage implements OnInit {
   list = []
 
   constructor(
+    private navCtrl: NavController,
     private httpClient: HttpClient,
     @Inject(LOCAL_STORAGE) private storage: StorageService
   ) {}
@@ -33,5 +35,9 @@ export class ListPage implements OnInit {
       .then(respose => {
         this.list = respose
       });
+  }
+
+  goToCreate(){
+    this.navCtrl.navigateForward('/patients-create');
   }
 }
