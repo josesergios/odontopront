@@ -43,7 +43,7 @@ export class AppComponent {
         },
         {
           title : "Usuários",
-          url   : "/users",
+          url   : "/users-list",
           icon  : "people-outline"
         },
         {
