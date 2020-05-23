@@ -13,10 +13,12 @@ import { IonicStorageModule } from '@ionic/storage';
 import { HttpClientModule } from '@angular/common/http';
 import { StorageServiceModule } from 'ngx-webstorage-service';
 
+import { NgxMaskIonicModule } from 'ngx-mask-ionic';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot(), HttpClientModule, StorageServiceModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot(), HttpClientModule, StorageServiceModule, NgxMaskIonicModule.forRoot()],
   providers: [
     StatusBar,
     SplashScreen,

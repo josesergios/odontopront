@@ -32,8 +32,6 @@ export class LoginPage implements OnInit {
   ngOnInit() { }
 
   login(){
-    let vm = this;
-
     const requestOptions = {
       headers: {
         'Content-Type': 'application/json',
@@ -48,7 +46,7 @@ export class LoginPage implements OnInit {
           this.storage.set('auth.user', respose.user);
           this.storage.set('auth.token', respose.token);
 
-          vm.router.navigateByUrl('/patients-list');
+          this.router.navigateByUrl('/patients-list');
         }).catch(error => {
           window.alert('Ocorreu um erro ao realizar o login, favor verificar os dados de acesso e tentar novamente.')
         });
