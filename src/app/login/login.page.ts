@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
+import { Inject, Injectable } from '@angular/core';
+import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +14,7 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['./login.page.scss'],
 })
 
+@Injectable()
 export class LoginPage implements OnInit {
   credentials = {
     email: "user@odontopront.io",
@@ -22,8 +25,8 @@ export class LoginPage implements OnInit {
     private httpService: HttpClient,
     private navCtrl: NavController,
     public alertController: AlertController,
-    private storage: Storage,
-    private router: Router) {
+    private router: Router,
+    @Inject(LOCAL_STORAGE) private storage: StorageService) {
   }
 
   ngOnInit() { }
@@ -42,8 +45,8 @@ export class LoginPage implements OnInit {
     this.httpService
         .post(environment.baseurl + '/login', this.credentials, requestOptions).toPromise()
         .then(respose => {
-          vm.storage.set('auth.user', respose.user);
-          vm.storage.set('auth.token', respose.token);
+          this.storage.set('auth.user', respose.user);
+          this.storage.set('auth.token', respose.token);
 
           vm.router.navigateByUrl('/patients-list');
         }).catch(error => {

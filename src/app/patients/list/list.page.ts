@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
-import { NavController } from "@ionic/angular";
-import { Storage } from "@ionic/storage";
 import { Router } from "@angular/router";
+import { Inject, Injectable } from '@angular/core';
+import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 
 @Component({
   selector: 'app-list',
@@ -18,19 +17,14 @@ export class ListPage implements OnInit {
 
   constructor(
     private httpClient: HttpClient,
-    private storage: Storage,
+    @Inject(LOCAL_STORAGE) private storage: StorageService
   ) {}
 
   ngOnInit() {
-    var token: any;
-    this.storage.get('auth.token').then((data) => {
-      token = data
-    });
-
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
-        'Authorization': 'Bearer ' + token
+        'Authorization': 'Bearer ' + this.storage.get('auth.token')
       })
     };
 

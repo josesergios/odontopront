@@ -1,9 +1,25 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Pacientes</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button auto-hide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Pacientes</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <p *ngIf="list.length === 0" class="text-center">Nenhum resultado encontrado.</p>
+  <ion-list *ngIf="list.length > 0">
+    <ion-item *ngFor="let item of list">
+      <ion-label>
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.address.city}}, {{ item.address.uf }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
