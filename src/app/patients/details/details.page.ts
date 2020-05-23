@@ -12,7 +12,8 @@ export class DetailsPage implements OnInit {
 
   ngOnInit() {
   }
-  goToList(){
+
+  goToBack(){
     this.navCtrl.navigateForward('/patients-list');
   }
 
