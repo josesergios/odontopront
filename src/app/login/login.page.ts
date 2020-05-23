@@ -43,7 +43,9 @@ export class LoginPage implements OnInit {
     this.httpService
         .post(environment.baseurl + '/login', this.credentials, requestOptions).toPromise()
         .then(respose => {
+          // @ts-ignore
           this.storage.set('auth.user', respose.user);
+          // @ts-ignore
           this.storage.set('auth.token', respose.token);
 
           this.router.navigateByUrl('/patients-list');

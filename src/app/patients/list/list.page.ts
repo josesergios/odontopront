@@ -14,7 +14,7 @@ import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 
 @Injectable()
 export class ListPage implements OnInit {
-  list = []
+  list: Object = []
 
   constructor(
     private navCtrl: NavController,
