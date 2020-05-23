@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { NavController } from '@ionic/angular';
-import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Storage } from '@ionic/storage';
-import { Inject, Injectable } from '@angular/core';
-import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
+
 
 @Component({
   selector: 'app-login',
@@ -14,47 +11,34 @@ import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
   styleUrls: ['./login.page.scss'],
 })
 
-@Injectable()
-export class LoginPage implements OnInit {
-  credentials = {
-    email: "user@odontopront.io",
-    password: "12345678"
-  }
+  export class LoginPage implements OnInit {
+    public itens:any;
+    constructor(private httpService: HttpClient, private navCtrl: NavController) {
+    }
+  
+    logindata:any ={};
+  
+    ngOnInit() {
+    }
 
-  constructor(
-    private httpService: HttpClient,
-    private navCtrl: NavController,
-    public alertController: AlertController,
-    private router: Router,
-    @Inject(LOCAL_STORAGE) private storage: StorageService) {
-  }
+    login(){
+      let url="http://localhost:8000";
+      let data= {email:"user@odontopront.io", password:"12345678"};
 
-  ngOnInit() { }
+      const requestOptions = {
+        headers: {
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-cache, private'
+        },
+        params: new HttpParams()
+      };
 
-  login(){
-    let vm = this;
+      this.httpService.post( url+'/login', data, requestOptions).toPromise().then(res => {
+        console.log("RESPOSTA", res);
+      });
+    }
 
-    const requestOptions = {
-      headers: {
-        'Content-Type': 'application/json',
-        'Cache-Control': 'no-cache, private'
-      },
-      params: new HttpParams()
-    };
-
-    this.httpService
-        .post(environment.baseurl + '/login', this.credentials, requestOptions).toPromise()
-        .then(respose => {
-          this.storage.set('auth.user', respose.user);
-          this.storage.set('auth.token', respose.token);
-
-          vm.router.navigateByUrl('/patients-list');
-        }).catch(error => {
-          window.alert('Ocorreu um erro ao realizar o login, favor verificar os dados de acesso e tentar novamente.')
-        });
-  }
-
-  goTosenhaPage(){
-    this.navCtrl.navigateForward('/register');
-  }
+    goTosenhaPage(){
+      this.navCtrl.navigateForward('/register');
+    }
 }
