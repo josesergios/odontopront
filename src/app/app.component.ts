@@ -33,7 +33,7 @@ export class AppComponent {
       [
         {
           title : "Pacientes",
-          url   : "/patients",
+          url   : "/patients-list",
           icon  : "finger-print-outline"
         },
         {

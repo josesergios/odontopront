@@ -29,7 +29,7 @@ const routes: Routes = [
     loadChildren: () => import('./patients/create/create.module').then( m => m.CreatePageModule)
   },
   {
-    path: 'patients-details',
+    path: 'patients-details/:id',
     loadChildren: () => import('./patients/details/details.module').then( m => m.DetailsPageModule)
   },
   {

@@ -1,172 +1,28 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-button (click)="goToList()">
+      <ion-button (click)="goToBack()">
         <ion-icon name="arrow-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title class="ion-text-center">Detalhes dos pacientes</ion-title>
+    <ion-title class="ion-text-center">Detalhes do paciente</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <h4 class="ion-margin-start">Informações gerais</h4>
-
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Nome completo:</ion-label>
-    <ion-input [(ngModel)]="form.name"></ion-input>
-  </ion-item>
-
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Documento de idenfiticação:</ion-label>
-    <ion-input [(ngModel)]="form.document"></ion-input>
-  </ion-item>
-
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Data de nascimento:</ion-label>
-    <ion-datetime [(ngModel)]="form.birth_date" displayFormat="DD/MM/YYYY"></ion-datetime>
-  </ion-item>
-
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Gênero:</ion-label>
-    <ion-select interface="action-sheet" [(ngModel)]="form.gender">
-      <ion-select-option value="male">Masculino</ion-select-option>
-      <ion-select-option value="female">Feminino</ion-select-option>
-      <ion-select-option value="other">Outro</ion-select-option>
-    </ion-select>
-  </ion-item>
-
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Cor da pele:</ion-label>
-    <ion-select interface="action-sheet" [(ngModel)]="form.skin_color">
-      <ion-select-option value="white">Branco</ion-select-option>
-      <ion-select-option value="yellow">Amarelo</ion-select-option>
-      <ion-select-option value="brown">Pardo</ion-select-option>
-      <ion-select-option value="indian">Índio</ion-select-option>
-      <ion-select-option value="black">Preto</ion-select-option>
-    </ion-select>
-  </ion-item>
-
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Cidade de nascimento:</ion-label>
-    <ion-input [(ngModel)]="form.birth_city"></ion-input>
-  </ion-item>
-
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Estado de nascimento:</ion-label>
-    <ion-select interface="action-sheet" [(ngModel)]="form.birth_uf">
-      <ion-select-option *ngFor="let state of states" value="{{state.value}}" >{{ state.name }}</ion-select-option>
-    </ion-select>
-  </ion-item>
-
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Estado civil:</ion-label>
-    <ion-select interface="action-sheet" [(ngModel)]="form.marital_status">
-      <ion-select-option value="single">Solteiro</ion-select-option>
-      <ion-select-option value="married">Casado</ion-select-option>
-      <ion-select-option value="separated">Separado</ion-select-option>
-      <ion-select-option value="divorced">Divorciado</ion-select-option>
-      <ion-select-option value="widower">Viúvo</ion-select-option>
-    </ion-select>
-  </ion-item>
-
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Ocupação:</ion-label>
-    <ion-input [(ngModel)]="form.occupation"></ion-input>
-  </ion-item>
-
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Telefone celular:</ion-label>
-    <ion-input [(ngModel)]="form.mobile"></ion-input>
-  </ion-item>
-
-  <h4 class="ion-margin-start">Endereço residencial</h4>
-
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Logradouro:</ion-label>
-    <ion-input [(ngModel)]="form.address.street"></ion-input>
-  </ion-item>
-
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Número:</ion-label>
-    <ion-input [(ngModel)]="form.address.number"></ion-input>
-  </ion-item>
-
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Complemento:</ion-label>
-    <ion-input [(ngModel)]="form.address.complement"></ion-input>
-  </ion-item>
-
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Bairro:</ion-label>
-    <ion-input [(ngModel)]="form.address.neighborhood"></ion-input>
-  </ion-item>
-
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Cidade:</ion-label>
-    <ion-input [(ngModel)]="form.address.city"></ion-input>
-  </ion-item>
-
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Estado:</ion-label>
-    <ion-select interface="action-sheet" [(ngModel)]="form.address.uf">
-      <ion-select-option *ngFor="let state of states" value="{{state.value}}" >{{ state.name }}</ion-select-option>
-    </ion-select>
-  </ion-item>
-
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Código postal:</ion-label>
-    <ion-input [(ngModel)]="form.address.postcode"></ion-input>
-  </ion-item>
-
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Telefone:</ion-label>
-    <ion-input [(ngModel)]="form.address.phone"></ion-input>
-  </ion-item>
-
-  <h4 class="ion-margin-start">Endereço comercial</h4>
-
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Logradouro:</ion-label>
-    <ion-input [(ngModel)]="form.commercial_address.street"></ion-input>
-  </ion-item>
-
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Número:</ion-label>
-    <ion-input [(ngModel)]="form.commercial_address.number"></ion-input>
-  </ion-item>
-
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Complemento:</ion-label>
-    <ion-input [(ngModel)]="form.commercial_address.complement"></ion-input>
-  </ion-item>
-
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Bairro:</ion-label>
-    <ion-input [(ngModel)]="form.commercial_address.neighborhood"></ion-input>
-  </ion-item>
-
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Cidade:</ion-label>
-    <ion-input [(ngModel)]="form.commercial_address.city"></ion-input>
-  </ion-item>
-
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Estado:</ion-label>
-    <ion-select interface="action-sheet" [(ngModel)]="form.commercial_address.uf">
-      <ion-select-option *ngFor="let state of states" value="{{state.value}}" >{{ state.name }}</ion-select-option>
-    </ion-select>
-  </ion-item>
-
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Código postal:</ion-label>
-    <ion-input [(ngModel)]="form.commercial_address.postcode"></ion-input>
-  </ion-item>
-
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Telefone:</ion-label>
-    <ion-input [(ngModel)]="form.commercial_address.phone"></ion-input>
-  </ion-item>
-
 </ion-content>
 
+<ion-content>
+  <!-- <p *ngIf="patients.length === 0" class="ion-margin-start">Nenhum resultado encontrado.</p>
+  <ion-list *ngIf="patients.length > 0">
+    <ion-item *ngFor="let item of patients">
+      <ion-label> -->
+        <div *ngIf="patients">
+          <h2>{{ patients.name }}</h2>
+          <p>{{ patients.address.city}}, {{ patients.address.uf }}</p>
+        </div>
+      <!-- </ion-label>
+    </ion-item>
+  </ion-list> -->
+</ion-content>

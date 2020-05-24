@@ -20,7 +20,7 @@
         <img src="/assets/avatar.jpg">
       </ion-avatar>
       <ion-label>
-        <h2 (click)="goToDetails()" >{{ item.name }}</h2>
+        <h2 (click)="goToDetails(item.id)" >{{ item.name }}</h2>
         <p>{{ item.address.city}}, {{ item.address.uf }}</p>
       </ion-label>
     </ion-item>
