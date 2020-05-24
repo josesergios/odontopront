@@ -33,12 +33,16 @@ const routes: Routes = [
     loadChildren: () => import('./patients/details/details.module').then( m => m.DetailsPageModule)
   },
   {
-    path: 'patients-list',
-    loadChildren: () => import('./patients/list/list.module').then( m => m.ListPageModule)
+    path: 'records-list',
+    loadChildren: () => import('./records/list/list.module').then(m => m.ListPageModule)
   },
   {
-    path: 'patients-create',
-    loadChildren: () => import('./patients/create/create.module').then( m => m.CreatePageModule)
+    path: 'records-create',
+    loadChildren: () => import('./records/create/create.module').then(m => m.CreatePageModule)
+  },
+  {
+    path: 'records-details',
+    loadChildren: () => import('./records/details/details.module').then(m => m.DetailsPageModule)
   },
   {
     path: 'users-list',

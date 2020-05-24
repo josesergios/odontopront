@@ -38,7 +38,7 @@ export class AppComponent {
         },
         {
           title : "Prontuários",
-          url   : "/medical-report",
+          url   : "/records-list",
           icon  : "reader-outline"
         },
         {
