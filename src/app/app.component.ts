@@ -33,12 +33,12 @@ export class AppComponent {
       [
         {
           title : "Pacientes",
-          url   : "/patients",
+          url   : "/patients-list",
           icon  : "finger-print-outline"
         },
         {
           title : "Prontuários",
-          url   : "/medical-report",
+          url   : "/records-list",
           icon  : "reader-outline"
         },
         {

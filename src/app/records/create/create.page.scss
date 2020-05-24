@@ -1,0 +1,30 @@
+.ion-text-muted{
+  color: #777;
+}
+
+.ion-text-small{
+  font-size: 75%;
+}
+
+.ion-block{
+  min-height: 48px;
+  background: var(ion-item-background, var(ion-background-color, #fff));
+  transition: opacity 15ms linear, background-color 15ms linear;
+  margin-bottom: 16px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: rgba(0, 0, 0, 0.13);
+  font-size: 16px;
+  font-weight: normal;
+  text-transform: none;
+}
+
+.select-text{
+  font-size: 13px;
+}
+
+.ion-select{
+  max-width: 100%;
+  margin: 0;
+  padding: 16px 0;
+}
