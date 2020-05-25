@@ -20,7 +20,7 @@ export class DetailsPage implements OnInit {
     @Inject(LOCAL_STORAGE) private storage: StorageService) {
       this.contato = [
         {
-        "name" : "Sergio",
+        "name" : "José da Silva",
         "document": "01258862",
         "birth_date": "20/05/2020",
         "gender": "Masculino",
@@ -34,7 +34,7 @@ export class DetailsPage implements OnInit {
           "street": " Carneiro",
           "number": "256",
           "complement": "predio azul",
-          "neighborhood": "queimadinha",
+          "neighborhood": "Queimadinha",
           "city": "Feira de santana",
           "uf": "BA",
           "postcode": "44050098",
@@ -46,8 +46,6 @@ export class DetailsPage implements OnInit {
      }
   
   async ngOnInit() {
-
-    // Isso aqui deve funcionar, vai trazer os dados dinâmicos ... funfou não kkk , deixa estático por enquanto ...
     // const httpOptions = {
     //   headers: new HttpHeaders({
     //     'Content-Type':  'application/json',
