@@ -62,7 +62,7 @@ export class CreatePage implements OnInit {
   }
 
   form = {
-    patient_id: 1,
+    patient_id: 2,
     main_complaint: "",
     disease_history: "",
     using_medicine: "",

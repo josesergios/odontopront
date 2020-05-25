@@ -442,6 +442,64 @@
     <ion-label position="stacked">Prognóstico:</ion-label>
     <ion-input [(ngModel)]="form.diagnostic.prognosis"></ion-input>
   </ion-item>
+
+  <h4>Encaminhamento</h4>
+
+  <ion-item class="ion-margin-bottom">
+    <ion-checkbox [(ngModel)]="form.referral.dentistry" class="ion-margin-end"></ion-checkbox> <span class="ion-text-small">Dentística</span>
+  </ion-item>
+
+  <ion-item class="ion-margin-bottom">
+    <ion-label position="stacked">Cururgia (Unidades):</ion-label>
+    <ion-input [(ngModel)]="form.referral.surgery"></ion-input>
+  </ion-item>
+
+  <ion-item class="ion-margin-bottom">
+    <ion-checkbox [(ngModel)]="form.referral.periodontics" class="ion-margin-end"></ion-checkbox> <span class="ion-text-small">Periondontia</span>
+  </ion-item>
+
+  <ion-item class="ion-margin-bottom">
+    <ion-label position="stacked">Radiografia (Unidades):</ion-label>
+    <ion-input [(ngModel)]="form.referral.radiography"></ion-input>
+  </ion-item>
+
+  <ion-item class="ion-margin-bottom">
+    <ion-checkbox [(ngModel)]="form.referral.pediatric_dentistry" class="ion-margin-end"></ion-checkbox> <span class="ion-text-small">Odontopediatria</span>
+  </ion-item>
+
+  <ion-item class="ion-margin-bottom">
+    <ion-label position="stacked">Endodontia (Unidades):</ion-label>
+    <ion-input [(ngModel)]="form.referral.endodontics"></ion-input>
+  </ion-item>
+
+  <ion-item class="ion-margin-bottom">
+    <ion-checkbox [(ngModel)]="form.referral.orthodontics" class="ion-margin-end"></ion-checkbox> <span class="ion-text-small">Ortodontia</span>
+  </ion-item>
+
+  <h5>Prósteses</h5>
+
+  <ion-item class="ion-margin-bottom">
+    <ion-label position="stacked">Prótese (Unidades):</ion-label>
+    <ion-input [(ngModel)]="form.prosthesis.fixed"></ion-input>
+  </ion-item>
+
+  <ion-item class="ion-margin-bottom">
+    <ion-checkbox [(ngModel)]="form.prosthesis.removable_top" class="ion-margin-end"></ion-checkbox> <span class="ion-text-small">Prótese removível superior</span>
+  </ion-item>
+
+  <ion-item class="ion-margin-bottom">
+    <ion-checkbox [(ngModel)]="form.prosthesis.removable_bottom" class="ion-margin-end"></ion-checkbox> <span class="ion-text-small">Prótese removível inferior</span>
+  </ion-item>
+
+  <ion-item class="ion-margin-bottom">
+    <ion-checkbox [(ngModel)]="form.prosthesis.full_top" class="ion-margin-end"></ion-checkbox> <span class="ion-text-small">Prótese total superior</span>
+  </ion-item>
+
+  <ion-item class="ion-margin-bottom">
+    <ion-checkbox [(ngModel)]="form.prosthesis.full_bottom" class="ion-margin-end"></ion-checkbox> <span class="ion-text-small">Prótese total inferior</span>
+  </ion-item>
+
+
 </ion-content>
 
 <ion-footer>
