@@ -11,18 +11,116 @@
 
 <ion-content>
   <h4 class="ion-margin-start">Informações gerais</h4>
-</ion-content>
 
-<ion-content>
-  <!-- <p *ngIf="patients.length === 0" class="ion-margin-start">Nenhum resultado encontrado.</p>
+
+<!--ion-content>
+   <p *ngIf="patients.length === 0" class="ion-margin-start">Nenhum resultado encontrado.</p>
   <ion-list *ngIf="patients.length > 0">
     <ion-item *ngFor="let item of patients">
-      <ion-label> -->
+      <ion-label> 
         <div *ngIf="patients">
           <h2>{{ patients.name }}</h2>
           <p>{{ patients.address.city}}, {{ patients.address.uf }}</p>
         </div>
-      <!-- </ion-label>
+       </ion-label>
     </ion-item>
-  </ion-list> -->
+  </ion-list> 
+</ion-content>-->
+
+
+
+<p *ngIf="contato.length === 0" class="ion-margin-start">Nenhum resultado encontrado.</p>
+
+<ion-list *ngIf="contato.length > 0">
+  <ion-item *ngFor="let contato of contato">
+    <ion-label> 
+        <div *ngIf="contato">
+            <ion-item class="ion-margin-bottom">
+              <ion-label position="stacked">Nome completo:</ion-label>
+              <h2>{{ contato.name }}</h2>
+            </ion-item>
+              
+            <ion-item class="ion-margin-bottom">
+              <ion-label position="stacked">Documento de idenfiticação:</ion-label>
+              <h2>{{ contato.document }}</h2>
+            </ion-item>
+
+            <ion-item class="ion-margin-bottom">
+              <ion-label position="stacked">Data de nascimento:</ion-label>
+              <h2>{{ contato.birth_date }}</h2>
+            </ion-item>
+
+            <ion-item class="ion-margin-bottom">
+              <ion-label position="stacked">Genero:</ion-label>
+              <h2>{{ contato.gender }}</h2>
+            </ion-item>
+
+            <ion-item class="ion-margin-bottom">
+              <ion-label position="stacked">Cor de pele:</ion-label>
+              <h2>{{ contato.skin_color}}</h2>
+            </ion-item>
+
+            <ion-item class="ion-margin-bottom">
+              <ion-label position="stacked">Cidade de nascimento:</ion-label>
+              <h2>{{ contato.birth_city }}</h2>
+            </ion-item>
+
+            <ion-item class="ion-margin-bottom">
+              <ion-label position="stacked">Estado civil:</ion-label>
+              <h2>{{ contato.marital_status }}</h2>
+            </ion-item>
+
+            <ion-item class="ion-margin-bottom">
+              <ion-label position="stacked">Telefone:</ion-label>
+              <h2>{{ contato.mobile }}</h2>
+            </ion-item>
+          
+            <ion-item class="ion-margin-bottom">
+              <ion-label position="stacked">Profissao:</ion-label>
+              <h2>{{ contato.occupation }}</h2>
+            </ion-item>
+          
+            <ion-item class="ion-margin-bottom">
+              <ion-label position="stacked">Rua:</ion-label>
+              <h2>{{ contato.address.street }}</h2>
+            </ion-item>
+          
+            <ion-item class="ion-margin-bottom">
+              <ion-label position="stacked">Numero:</ion-label>
+              <h2>{{ contato.address.number }}</h2>
+            </ion-item>
+          
+            <ion-item class="ion-margin-bottom">
+              <ion-label position="stacked">Lagadouro:</ion-label>
+              <h2>{{ contato.address.complement }}</h2>
+            </ion-item>
+          
+            <ion-item class="ion-margin-bottom">
+              <ion-label position="stacked">Bairro:</ion-label>
+              <h2>{{ contato.address.neighborhood }}</h2>
+            </ion-item>
+          
+            <ion-item class="ion-margin-bottom">
+              <ion-label position="stacked">Cidade:</ion-label>
+              <h2>{{ contato.address.city }}</h2>
+            </ion-item>
+          
+            <ion-item class="ion-margin-bottom">
+              <ion-label position="stacked">Estado:</ion-label>
+              <h2>{{ contato.address.uf }}</h2>
+            </ion-item>
+          
+            <ion-item class="ion-margin-bottom">
+              <ion-label position="stacked">CEP:</ion-label>
+              <h2>{{ contato.address.postcode }}</h2>
+            </ion-item>
+          
+            <ion-item class="ion-margin-bottom">
+              <ion-label position="stacked">Celular:</ion-label>
+              <h2>{{ contato.address.phone }}</h2>
+            </ion-item>
+          </div>
+      </ion-label>
+    </ion-item>
+  </ion-list> 
 </ion-content>
