@@ -27,13 +27,13 @@ export class ListPage implements OnInit {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'Authorization': 'Bearer ' + this.storage.get('auth.token')
-      })
+      }),
     };
 
     this.httpClient
       .get(environment.apiurl + '/patients', httpOptions).toPromise()
-      .then(respose => {
-        this.list = respose
+      .then(response => {
+        this.list = response
       });
   }
 
