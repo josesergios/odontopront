@@ -41,7 +41,7 @@ const routes: Routes = [
     loadChildren: () => import('./records/create/create.module').then(m => m.CreatePageModule)
   },
   {
-    path: 'records-details',
+    path: 'records-details/:id',
     loadChildren: () => import('./records/details/details.module').then(m => m.DetailsPageModule)
   },
   {
@@ -52,6 +52,11 @@ const routes: Routes = [
     path: 'users-create',
     loadChildren: () => import('./users/create/create.module').then( m => m.CreatePageModule)
   },
+  {
+    path: 'profile',
+    loadChildren: () => import('./users/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+
 
 
 ];

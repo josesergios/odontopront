@@ -8,8 +8,22 @@
     <ion-title class="ion-text-center">Prontuário #123</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-  <h4 class="ion-margin-start">Dados do paciente</h4>
+  <h4 class="ion-margin-start">Informações gerais</h4>
+
+  <p *ngIf="!contato" class="ion-margin-start">Nenhum resultado encontrado.</p>
+
+  <ion-list >
+    <ion-item >
+      <ion-label> 
+          <div *ngIf="prontuario">
+              <ion-item class="ion-margin-bottom">
+                <ion-label position="stacked">Nome completo:</ion-label>
+                <h3>{{ prontuario.patient.name }}</h3>
+              </ion-item>
+            </div>
+        </ion-label>
+      </ion-item>
+  </ion-list>  
 </ion-content>
 

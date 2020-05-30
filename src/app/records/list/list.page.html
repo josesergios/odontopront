@@ -12,8 +12,8 @@
   <ion-list *ngIf="list.length > 0">
     <ion-item *ngFor="let item of list">
       <ion-label>
-        <h2 (click)="goToDetails()" >{{ item.patient.name }}</h2>
-        <small>#{{ item.id}} | {{ item.created_at }}</small>
+        <h2 (click)="goToDetailsRecords(item.id)">{{ item.patient.name }}</h2>
+        <small>#{{ item.id }} | {{ item.created_at }}</small>
       </ion-label>
     </ion-item>
   </ion-list>
