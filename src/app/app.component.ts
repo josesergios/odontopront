@@ -51,6 +51,16 @@ export class AppComponent {
           url   : "/profile",
           icon  : "person-outline"
         },
+        {
+          title : "Alterar senha",
+          url   : "/password",
+          icon  : "lock-closed-outline"
+        },
+        {
+          title : "Sair",
+          url   : "/logout",
+          icon  : "log-out-outline"
+        },
       ]
   }
 }

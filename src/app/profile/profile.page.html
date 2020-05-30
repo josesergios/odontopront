@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button auto-hide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <p *ngIf="!user" class="ion-margin-start">Nenhum resultado encontrado.</p>
+
+  <div *ngIf="user">
+    <ion-item>
+      <ion-label position="stacked">Nome:</ion-label>
+      <ion-input [(ngModel)]="user.name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Email:</ion-label>
+      <ion-input [(ngModel)]="user.email" disabled="disabled"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Telefone:</ion-label>
+      <ion-input [(ngModel)]="user.phone"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Código de matrícula:</ion-label>
+      <ion-input [(ngModel)]="user.code" disabled="disabled"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Tipo:</ion-label>
+      <ion-input [(ngModel)]="user.type" disabled="disabled"></ion-input>
+    </ion-item>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button color="primary" expand="block" (click)="updateProfile()">
+      Salvar
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
+
+
