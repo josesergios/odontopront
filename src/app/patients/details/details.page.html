@@ -6,147 +6,169 @@
       </ion-button>
     </ion-buttons>
     <ion-title class="ion-text-center">Detalhes do paciente</ion-title>
+      <ion-buttons slot="end">
+          <ion-button (click)="goToCreateRecords()">
+              <ion-icon name="add"></ion-icon>
+          </ion-button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <h4 class="ion-margin-start">Informações gerais</h4>
+    <ion-toolbar color="light">
+        <ion-title>Informações gerais</ion-title>
+    </ion-toolbar>
 
-  <p *ngIf="!contato" class="ion-margin-start">Nenhum resultado encontrado.</p>
+    <p *ngIf="!patient" class="ion-margin-start">Nenhum resultado encontrado.</p>
 
-  <ion-list >
-    <ion-item >
-      <ion-label> 
-          <div *ngIf="contato">
-              <ion-item class="ion-margin-bottom">
-                <ion-label position="stacked">Nome completo:</ion-label>
-                <h3>{{ contato.name }}</h3>
-              </ion-item>
-                
-              <ion-item class="ion-margin-bottom">
-                <ion-label position="stacked">Documento de idenfiticação:</ion-label>
-                <h3>{{ contato.document }}</h3>
-              </ion-item>
-
-              <ion-item class="ion-margin-bottom">
-                <ion-label position="stacked">Data de nascimento:</ion-label>
-                <h3>{{ contato.birth_date }}</h3>
-              </ion-item>
-
-              <ion-item class="ion-margin-bottom">
-                <ion-label position="stacked">Genero:</ion-label>
-                <h3>{{ contato.gender }}</h3>
-              </ion-item>
-
-              <ion-item class="ion-margin-bottom">
-                <ion-label position="stacked">Cor de pele:</ion-label>
-                <h3>{{ contato.skin_color}}</h3>
-              </ion-item>
-
-              <ion-item class="ion-margin-bottom">
-                <ion-label position="stacked">Cidade de nascimento:</ion-label>
-                <h3>{{ contato.birth_city }}</h3>
-              </ion-item>
-
-              <ion-item class="ion-margin-bottom">
-                <ion-label position="stacked">Estado civil:</ion-label>
-                <h3>{{ contato.marital_status }}</h3>
-              </ion-item>
-
-              <ion-item class="ion-margin-bottom">
-                <ion-label position="stacked">Telefone:</ion-label>
-                <h3>{{ contato.mobile }}</h3>
-              </ion-item>
-            
-              <ion-item class="ion-margin-bottom">
-                <ion-label position="stacked">Profissao:</ion-label>
-                <h3>{{ contato.occupation }}</h3>
-              </ion-item>
-            
-              <h2>Endereço Residêncial</h2>
-              <ion-item class="ion-margin-bottom">
-                <ion-label position="stacked">Rua:</ion-label>
-                <h3>{{ contato.address.street }}</h3>
-              </ion-item>
-            
-              <ion-item class="ion-margin-bottom">
-                <ion-label position="stacked">Numero:</ion-label>
-                <h3>{{ contato.address.number }}</h3>
-              </ion-item>
-            
-              <ion-item class="ion-margin-bottom">
-                <ion-label position="stacked">Lagadouro:</ion-label>
-                <h3>{{ contato.address.complement }}</h3>
-              </ion-item>
-            
-              <ion-item class="ion-margin-bottom">
-                <ion-label position="stacked">Bairro:</ion-label>
-                <h3>{{ contato.address.neighborhood }}</h3>
-              </ion-item>
-            
-              <ion-item class="ion-margin-bottom">
-                <ion-label position="stacked">Cidade:</ion-label>
-                <h3>{{ contato.address.city }}</h3>
-              </ion-item>
-            
-              <ion-item class="ion-margin-bottom">
-                <ion-label position="stacked">Estado:</ion-label>
-                <h3>{{ contato.address.uf }}</h3>
-              </ion-item>
-            
-              <ion-item class="ion-margin-bottom">
-                <ion-label position="stacked">CEP:</ion-label>
-                <h3>{{ contato.address.postcode }}</h3>
-              </ion-item>
-            
-              <ion-item class="ion-margin-bottom">
-                <ion-label position="stacked">Celular:</ion-label>
-                <h3>{{ contato.address.phone }}</h3>
-              </ion-item>
-              
-              <h2>Endereço Comercial</h2>
-        
-              <ion-item class="ion-margin-bottom">
-                <ion-label position="stacked">Logradouro:</ion-label>
-                  <h3>{{ contato.commercial_address.street }}</h3>
-                </ion-item>
-            
-              <ion-item class="ion-margin-bottom">
-                <ion-label position="stacked">Número:</ion-label>
-                  <h3>{{ contato.commercial_address.number }}</h3>
-                </ion-item>
-            
-              <ion-item class="ion-margin-bottom">
-                <ion-label position="stacked">Complemento:</ion-label>
-                <h3>{{ contato.commercial_address.complement }}</h3>
-                </ion-item>
-            
-              <ion-item class="ion-margin-bottom">
-                <ion-label position="stacked">Bairro:</ion-label>
-                  <h3>{{ contato.commercial_address.neighborhood }}</h3>
-                </ion-item>
-            
-              <ion-item class="ion-margin-bottom">
-                <ion-label position="stacked">Cidade:</ion-label>
-                  <h3>{{ contato.commercial_address.city }}</h3>
-                </ion-item>
-            
-                <ion-item class="ion-margin-bottom">
-                  <ion-label position="stacked">Estado:</ion-label>
-                  <h3>{{ contato.commercial_address.uf }}</h3>
-                </ion-item>
-            
-              <ion-item class="ion-margin-bottom">
-                <ion-label position="stacked">Código postal:</ion-label>
-                <h3>{{ contato.commercial_address.postcode }}</h3>
-              </ion-item>
-            
-              <ion-item class="ion-margin-bottom">
-                <ion-label position="stacked">Telefone:</ion-label>
-                <h3>{{ contato.commercial_address.phone }}</h3>
-              </ion-item>
-            </div>
-        </ion-label>
+    <ion-list *ngIf="patient">
+      <ion-item class="ion-margin-bottom">
+          <ion-label position="stacked">Nome completo:</ion-label>
+          <p>{{ patient.name }}</p>
       </ion-item>
-  </ion-list>  
+
+      <ion-item class="ion-margin-bottom">
+          <ion-label position="stacked">Documento de idenfiticação:</ion-label>
+          <p>{{ patient.document }}</p>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+          <ion-label position="stacked">Data de nascimento:</ion-label>
+          <p>{{ patient.birth_date }}</p>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+          <ion-label position="stacked">Genero:</ion-label>
+          <p>{{ patient.gender }}</p>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+          <ion-label position="stacked">Cor de pele:</ion-label>
+          <p>{{ patient.skin_color}}</p>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+          <ion-label position="stacked">Cidade de nascimento:</ion-label>
+          <p>{{ patient.birth_city }}</p>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+          <ion-label position="stacked">Estado civil:</ion-label>
+          <p>{{ patient.marital_status }}</p>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+          <ion-label position="stacked">Telefone:</ion-label>
+          <p>{{ patient.mobile }}</p>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+          <ion-label position="stacked">Profissao:</ion-label>
+          <p>{{ patient.occupation }}</p>
+      </ion-item>
+
+      <ion-toolbar color="light">
+          <ion-title>Endereço residencial</ion-title>
+      </ion-toolbar>
+
+      <ion-item class="ion-margin-bottom">
+          <ion-label position="stacked">Rua:</ion-label>
+          <p>{{ patient.address.street }}</p>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+          <ion-label position="stacked">Numero:</ion-label>
+          <p>{{ patient.address.number }}</p>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+          <ion-label position="stacked">Lagadouro:</ion-label>
+          <p>{{ patient.address.complement }}</p>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+          <ion-label position="stacked">Bairro:</ion-label>
+          <p>{{ patient.address.neighborhood }}</p>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+          <ion-label position="stacked">Cidade:</ion-label>
+          <p>{{ patient.address.city }}</p>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+          <ion-label position="stacked">Estado:</ion-label>
+          <p>{{ patient.address.uf }}</p>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+          <ion-label position="stacked">CEP:</ion-label>
+          <p>{{ patient.address.postcode }}</p>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+          <ion-label position="stacked">Celular:</ion-label>
+          <p>{{ patient.address.phone }}</p>
+      </ion-item>
+
+      <div  *ngIf="patient.commercial_address.id !== null">
+          <ion-toolbar color="light">
+              <ion-title>Endereço comercial</ion-title>
+          </ion-toolbar>
+
+          <ion-item class="ion-margin-bottom">
+              <ion-label position="stacked">Logradouro:</ion-label>
+              <p>{{ patient.commercial_address.street }}</p>
+          </ion-item>
+
+          <ion-item class="ion-margin-bottom">
+              <ion-label position="stacked">Número:</ion-label>
+              <p>{{ patient.commercial_address.number }}</p>
+          </ion-item>
+
+          <ion-item class="ion-margin-bottom">
+              <ion-label position="stacked">Complemento:</ion-label>
+              <p>{{ patient.commercial_address.complement }}</p>
+          </ion-item>
+
+          <ion-item class="ion-margin-bottom">
+              <ion-label position="stacked">Bairro:</ion-label>
+              <p>{{ patient.commercial_address.neighborhood }}</p>
+          </ion-item>
+
+          <ion-item class="ion-margin-bottom">
+              <ion-label position="stacked">Cidade:</ion-label>
+              <p>{{ patient.commercial_address.city }}</p>
+          </ion-item>
+
+          <ion-item class="ion-margin-bottom">
+              <ion-label position="stacked">Estado:</ion-label>
+              <p>{{ patient.commercial_address.uf }}</p>
+          </ion-item>
+
+          <ion-item class="ion-margin-bottom">
+              <ion-label position="stacked">Código postal:</ion-label>
+              <p>{{ patient.commercial_address.postcode }}</p>
+          </ion-item>
+
+          <ion-item class="ion-margin-bottom">
+              <ion-label position="stacked">Telefone:</ion-label>
+              <p>{{ patient.commercial_address.phone }}</p>
+          </ion-item>
+      </div>
+    </ion-list>
+
+    <ion-toolbar color="light" *ngIf="patient">
+        <ion-title>Prontuários</ion-title>
+    </ion-toolbar>
+
+    <p *ngIf="patient && !patient.medical_records" class="ion-margin-start">Nenhum resultado encontrado.</p>
+
+    <ion-list *ngIf="patient && patient.medical_records">
+        <ion-item *ngFor="let item of patient.medical_records"  class="ion-margin-bottom">
+            <ion-label>
+                <h2 (click)="goToDetailsRecords(item.id)">#{{ item.id }} | {{ item.created_at }}</h2>
+            </ion-label>
+        </ion-item>
+    </ion-list>
 </ion-content>

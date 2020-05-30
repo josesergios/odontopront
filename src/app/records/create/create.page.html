@@ -10,26 +10,35 @@
 </ion-header>
 
 <ion-content>
-  <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Paciente:</ion-label>
+  <ion-toolbar color="light">
+    <ion-title>Paciente</ion-title>
+  </ion-toolbar>
+
+  <ion-item>
+    <ion-label position="stacked">Nome:</ion-label>
     <ion-input [(ngModel)]="patient.name" disabled="disabled"></ion-input>
   </ion-item>
-  <h4 class="ion-margin-start">Anamnese</h4>
 
-  <ion-item class="ion-margin-bottom">
+  <ion-toolbar color="light">
+    <ion-title>Anamnese</ion-title>
+  </ion-toolbar>
+
+  <ion-item class="ion-margin-bottom ion-margin-top">
     <ion-label position="stacked">Queixa principal (QP):</ion-label>
     <ion-input [(ngModel)]="form.main_complaint"></ion-input>
   </ion-item>
 
-  <ion-item class="ion-margin-bottom">
+  <ion-item>
     <ion-label position="stacked">História da doença atual (HD):</ion-label>
     <ion-input [(ngModel)]="form.disease_history"></ion-input>
     <p class="ion-text-muted ion-text-small">(Localização; início; duração; freqüência dos episódios; sintomas associados; tratamento instituídos; possível causa)</p>
   </ion-item>
 
-  <h5>História médica</h5>
+  <ion-toolbar color="light">
+    <ion-title>História médica</ion-title>
+  </ion-toolbar>
 
-  <div class="ion-block ion-padding-horizontal" *ngFor="let question of questions.medical">
+  <div class="ion-block ion-padding-horizontal ion-margin-vertical" *ngFor="let question of questions.medical">
     <ion-checkbox [(ngModel)]="form.answers[question.id].value" class="ion-margin-end"></ion-checkbox> <span class="ion-text-small">{{ question.title }}</span>
     <ion-input [(ngModel)]="form.answers[question.id].observations" placeholder="Observações"></ion-input>
   </div>
@@ -49,22 +58,26 @@
     <ion-input [(ngModel)]="form.family_history"></ion-input>
   </ion-item>
 
-  <ion-item class="ion-margin-bottom">
+  <ion-item>
     <ion-label position="stacked">História social e psicológica:</ion-label>
     <ion-input [(ngModel)]="form.social_psychological_history"></ion-input>
     <p class="ion-text-muted ion-text-small">Atividade física; jornada de trabalho; relação familiar,condições de moradia</p>
   </ion-item>
 
-  <h5>História odontologica</h5>
+  <ion-toolbar color="light">
+    <ion-title>História odontológica</ion-title>
+  </ion-toolbar>
 
   <div class="ion-block ion-padding-horizontal" *ngFor="let question of questions.dental">
     <ion-checkbox [(ngModel)]="form.answers[question.id].value" class="ion-margin-end"></ion-checkbox> <span class="ion-text-small">{{ question.title }}</span>
     <ion-input [(ngModel)]="form.answers[question.id].observations" placeholder="Observações"></ion-input>
   </div>
 
-  <h3>Exame físico</h3>
+  <ion-toolbar color="light">
+    <ion-title>Exame físico</ion-title>
+  </ion-toolbar>
 
-  <ion-item class="ion-margin-bottom">
+  <ion-item class="ion-margin-bottom ion-margin-top">
     <ion-label position="stacked">Avaliação geral:</ion-label>
     <ion-input [(ngModel)]="form.general_evaluation"></ion-input>
   </ion-item>
@@ -84,19 +97,21 @@
     <ion-input [(ngModel)]="form.measurement.diastolic"></ion-input>
   </ion-item>
 
-
   <ion-item class="ion-margin-bottom">
     <ion-label position="stacked">Avaliação da região da cabeça e pescoço:</ion-label>
     <ion-input [(ngModel)]="form.head_neck_evaluation"></ion-input>
   </ion-item>
 
-  <ion-item class="ion-margin-bottom">
+  <ion-item>
     <ion-label position="stacked">Linkfonodos:</ion-label>
     <ion-input [(ngModel)]="form.lymph_nodes"></ion-input>
   </ion-item>
 
-  <h5>Exame intrabucal</h5>
-  <ion-item class="ion-margin-bottom">
+  <ion-toolbar color="light">
+    <ion-title>Exame Intrabucal</ion-title>
+  </ion-toolbar>
+
+  <ion-item class="ion-margin-bottom ion-margin-top">
     <ion-label position="stacked">Partes moles:</ion-label>
     <ion-input [(ngModel)]="form.examination.soft_parts"></ion-input>
   </ion-item>
@@ -136,14 +151,16 @@
     <ion-input [(ngModel)]="form.examination.mobility"></ion-input>
   </ion-item>
 
-  <ion-item class="ion-margin-bottom">
+  <ion-item>
     <ion-label position="stacked">Sinais secundários:</ion-label>
     <ion-input [(ngModel)]="form.examination.secundary_signals"></ion-input>
   </ion-item>
 
-  <h5>Outras alterações</h5>
+  <ion-toolbar color="light">
+    <ion-title>Outras alterações</ion-title>
+  </ion-toolbar>
 
-  <ion-item class="ion-margin-bottom">
+  <ion-item class="ion-margin-bottom ion-margin-top">
     <ion-label position="stacked">Lábios:</ion-label>
     <ion-input [(ngModel)]="form.lips"></ion-input>
   </ion-item>
@@ -178,14 +195,16 @@
     <ion-input [(ngModel)]="form.soft_palate"></ion-input>
   </ion-item>
 
-  <ion-item class="ion-margin-bottom">
+  <ion-item>
     <ion-label position="stacked">Orofaringe:</ion-label>
     <ion-input [(ngModel)]="form.oropharynx"></ion-input>
   </ion-item>
 
-  <h4>Odontograma</h4>
+  <ion-toolbar color="light">
+    <ion-title>Odontograma</ion-title>
+  </ion-toolbar>
 
-  <ion-item>
+  <ion-item class="ion-margin-bottom ion-margin-top">
     <ion-grid class="ion-no-margin" style="width: 100%;">
       <ion-row>
         <ion-col>
@@ -413,22 +432,21 @@
     </ion-grid>
   </ion-item>
 
-
-
-
   <ion-item class="ion-margin-bottom">
     <ion-label position="stacked">Observações:</ion-label>
     <ion-input [(ngModel)]="form.observation"></ion-input>
   </ion-item>
 
-  <ion-item class="ion-margin-bottom">
+  <ion-item>
     <ion-label position="stacked">Exames complementares:</ion-label>
     <ion-input [(ngModel)]="form.complementary_exams"></ion-input>
   </ion-item>
 
-  <h4>Sumário de Diagnóstico</h4>
+  <ion-toolbar color="light">
+    <ion-title>Sumário de diagnóstico</ion-title>
+  </ion-toolbar>
 
-  <ion-item class="ion-margin-bottom">
+  <ion-item class="ion-margin-bottom ion-margin-top">
     <ion-label position="stacked">Suspeita clínica:</ion-label>
     <ion-input [(ngModel)]="form.diagnostic.clinical_suspicion"></ion-input>
   </ion-item>
@@ -438,14 +456,16 @@
     <ion-input [(ngModel)]="form.diagnostic.histopathological_diagnosis"></ion-input>
   </ion-item>
 
-  <ion-item class="ion-margin-bottom">
+  <ion-item>
     <ion-label position="stacked">Prognóstico:</ion-label>
     <ion-input [(ngModel)]="form.diagnostic.prognosis"></ion-input>
   </ion-item>
 
-  <h4>Encaminhamento</h4>
+  <ion-toolbar color="light">
+    <ion-title>Encaminhamento</ion-title>
+  </ion-toolbar>
 
-  <ion-item class="ion-margin-bottom">
+  <ion-item class="ion-margin-bottom ion-margin-top">
     <ion-checkbox [(ngModel)]="form.referral.dentistry" class="ion-margin-end"></ion-checkbox> <span class="ion-text-small">Dentística</span>
   </ion-item>
 
@@ -472,13 +492,15 @@
     <ion-input [(ngModel)]="form.referral.endodontics"></ion-input>
   </ion-item>
 
-  <ion-item class="ion-margin-bottom">
+  <ion-item>
     <ion-checkbox [(ngModel)]="form.referral.orthodontics" class="ion-margin-end"></ion-checkbox> <span class="ion-text-small">Ortodontia</span>
   </ion-item>
 
-  <h5>Prósteses</h5>
+  <ion-toolbar color="light">
+    <ion-title>Prósteses</ion-title>
+  </ion-toolbar>
 
-  <ion-item class="ion-margin-bottom">
+  <ion-item class="ion-margin-bottom ion-margin-top">
     <ion-label position="stacked">Prótese (Unidades):</ion-label>
     <ion-input [(ngModel)]="form.prosthesis.fixed"></ion-input>
   </ion-item>
@@ -498,8 +520,6 @@
   <ion-item class="ion-margin-bottom">
     <ion-checkbox [(ngModel)]="form.prosthesis.full_bottom" class="ion-margin-end"></ion-checkbox> <span class="ion-text-small">Prótese total inferior</span>
   </ion-item>
-
-
 </ion-content>
 
 <ion-footer>

@@ -20,15 +20,13 @@ export class ProfilePage implements OnInit {
     
   }
 
-  async editProfile(id){
+  async editProfile(){
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'Authorization': 'Bearer ' + await this.storage.get('auth.token')
       })
     };
-
-    let id = this.route.snapshot.paramMap.get('id');
 
     this.httpClient.put(environment.apiurl + '/users/profile' , httpOptions).toPromise().then(res => {
      //console.log('patients', res);

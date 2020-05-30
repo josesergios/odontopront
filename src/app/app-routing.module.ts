@@ -13,12 +13,8 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'cadastro',
-    loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule)
-  },
-  {
-    path: 'register',
-    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+    path: 'forgot-password',
+    loadChildren: () => import('./forgot-password/forgot-password.module').then(m => m.RegisterPageModule)
   },
   {
     path: 'patients-list',
@@ -37,7 +33,7 @@ const routes: Routes = [
     loadChildren: () => import('./records/list/list.module').then(m => m.ListPageModule)
   },
   {
-    path: 'records-create',
+    path: 'records-create/:id',
     loadChildren: () => import('./records/create/create.module').then(m => m.CreatePageModule)
   },
   {

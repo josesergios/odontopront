@@ -1,7 +1,7 @@
 import {Component, Inject, Injectable, NgModule, OnInit} from '@angular/core';
 import { NavController} from "@ionic/angular";
 import {environment} from "../../../environments/environment";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {LOCAL_STORAGE, StorageService} from "ngx-webstorage-service";
 
@@ -52,8 +52,8 @@ export class CreatePage implements OnInit {
     }
   ]
 
-  patient = {
-    name: "John Doe"
+  patient : any = {
+    name: ""
   }
 
   questions: Object = {
@@ -168,6 +168,7 @@ export class CreatePage implements OnInit {
     private navCtrl: NavController,
     private router: Router,
     private httpClient: HttpClient,
+    private route: ActivatedRoute,
     @Inject(LOCAL_STORAGE) private storage: StorageService
   ){ }
 
@@ -179,6 +180,12 @@ export class CreatePage implements OnInit {
         'Authorization': 'Bearer ' + this.storage.get('auth.token')
       })
     };
+
+    let id = this.route.snapshot.paramMap.get('id');
+
+    this.httpClient.get(environment.apiurl + '/patients/' + id, httpOptions).toPromise().then(response => {
+      vm.patient = response;
+    })
 
     this.httpClient
       .get(environment.apiurl + '/questions', httpOptions).toPromise()

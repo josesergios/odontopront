@@ -1,11 +1,9 @@
 import { Component, OnInit, Injectable, Inject } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { NavController, AlertController } from '@ionic/angular';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { StorageService, LOCAL_STORAGE } from 'ngx-webstorage-service';
-
 
 @Component({
   selector: 'app-login',
@@ -53,7 +51,7 @@ export class LoginPage implements OnInit {
         });
   }
 
-  goTosenhaPage(){
-    this.navCtrl.navigateForward('/register');
+  goToForgotPassword(){
+    this.navCtrl.navigateForward('/forgot-password');
   }
 }
