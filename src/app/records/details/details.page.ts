@@ -11,7 +11,7 @@ import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
   styleUrls: ['./details.page.scss'],
 })
 export class DetailsPage implements OnInit {
-  prontuario : any;
+  record : any;
   
   constructor( private navCtrl: NavController, private httpClient: HttpClient,
     private route: ActivatedRoute,
@@ -26,14 +26,13 @@ export class DetailsPage implements OnInit {
       };
   
       let id = this.route.snapshot.paramMap.get('id');
-  
-      this.httpClient.get(environment.apiurl + '/records/' + id, httpOptions).toPromise().then(res => {
-       console.log('patients', res);
-        this.prontuario = res;
+
+      this.httpClient.get(environment.apiurl + '/records/' + id, httpOptions).toPromise().then(response => {
+        this.record = response;
       })
     }
 
   goToBack(){
-    this.navCtrl.navigateForward('/records-list');
+    this.navCtrl.navigateBack('/records-list');
   }
 }
