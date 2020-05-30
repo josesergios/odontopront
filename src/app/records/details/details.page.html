@@ -9,6 +9,12 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="presentActionSheet()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
   <p *ngIf="!record" class="ion-margin-start">Nenhum resultado encontrado.</p>
 
   <div  *ngIf="record">
@@ -136,12 +142,21 @@
       <ion-title>História médica</ion-title>
     </ion-toolbar>
 
-    <ion-list>
-      <ion-item>
-        <ion-label position="stacked">História médica:</ion-label>
-        <p>{{  "@toDo"  }}</p>
-      </ion-item>
-    </ion-list>
+    <div  *ngFor="let item of record.answers">
+      <ion-list *ngIf="item.question.type === 'medical'">
+        <ion-item>
+          <ion-label position="stacked">{{ item.question.title }}</ion-label>
+          <p *ngIf="item.question.answer === 'boolean'">
+            {{  item.value === 1 ? 'Sim' : 'Não'  }}
+            <span *ngIf="item.observations"><br>Obs: {{ item.observations }}</span>
+          </p>
+          <p *ngIf="item.question.answer !== 'boolean'">
+            {{  item.value }}
+            <span *ngIf="item.observations"><br>Obs: {{ item.observations }}</span>
+          </p>
+        </ion-item>
+      </ion-list>
+    </div>
 
     <ion-list>
       <ion-item>
@@ -175,12 +190,21 @@
       <ion-title>História odontológica</ion-title>
     </ion-toolbar>
 
-    <ion-list>
-      <ion-item>
-        <ion-label position="stacked"></ion-label>
-        <p>{{ "@toDo" }}</p>
-      </ion-item>
-    </ion-list>
+    <div  *ngFor="let item of record.answers">
+      <ion-list *ngIf="item.question.type === 'dental'">
+        <ion-item>
+          <ion-label position="stacked">{{ item.question.title }}</ion-label>
+          <p *ngIf="item.question.answer === 'boolean'">
+            {{  item.value === 1 ? 'Sim' : 'Não'  }}
+            <span *ngIf="item.observations"><br>Obs: {{ item.observations }}</span>
+          </p>
+          <p *ngIf="item.question.answer !== 'boolean'">
+            {{  item.value }}
+            <span *ngIf="item.observations"><br>Obs: {{ item.observations }}</span>
+          </p>
+        </ion-item>
+      </ion-list>
+    </div>
 
     <ion-toolbar color="light">
       <ion-title>Exame físico</ion-title>
@@ -196,7 +220,32 @@
     <ion-list>
       <ion-item>
         <ion-label position="stacked">Aferição da tensão arterial</ion-label>
-        <p>{{ "@toDo" }}</p>
+
+        <p *ngIf="record.measurements.length === 0" class="text-center">Nenhum resultado encontrado.</p>
+        <ion-grid class="ion-no-padding ion-no-margin" style="width: 100%;" *ngIf="record.measurements.length > 0">
+          <ion-row>
+            <ion-col class="ion-no-padding" size="3">
+              <ion-label position="stacked">Pulso <small>bpm</small></ion-label>
+            </ion-col>
+            <ion-col class="ion-no-padding" size="4">
+              <ion-label position="stacked">T. Arterial <small>mmHG</small></ion-label>
+            </ion-col>
+            <ion-col class="ion-no-padding" size="5">
+              <ion-label position="stacked">Data</ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngFor="let item of record.measurements">
+            <ion-col class="ion-no-padding" size="3">
+              <p>{{ item.pulse }}</p>
+            </ion-col>
+            <ion-col class="ion-no-padding" size="4">
+              <p>{{ item.systolic }}/{{ item.diastolic }} </p>
+            </ion-col>
+            <ion-col class="ion-no-padding" size="5">
+              <p>{{ item.created_at }}</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-item>
     </ion-list>
 
@@ -346,10 +395,14 @@
     </ion-toolbar>
 
     <ion-list>
-      <ion-item>
-        <ion-label position="stacked"></ion-label>
-        <p>{{ "@doDo" }}</p>
-      </ion-item>
+      <ion-grid>
+        <ion-row class="ion-padding">
+          <ion-col *ngFor="let item of record.teeth" size="3">
+            <p class="ion-text-center" position="stacked">{{ item.number }}</p>
+            <p class="ion-text-center">{{ item.status }}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-list>
 
     <ion-list>
@@ -487,11 +540,17 @@
       <ion-title>Procedimentos realizados</ion-title>
     </ion-toolbar>
 
-
-    <ion-list>
-      <ion-item>
-        <ion-label position="stacked"></ion-label>
-        <p>{{ "" }}</p>
+    <p *ngIf="record.procedures.length === 0" class="text-center">Nenhum resultado encontrado.</p>
+    <ion-list *ngIf="record.procedures.length > 0">
+      <ion-item *ngFor="let item of record.procedures">
+        <ion-label>
+          <ion-label position="stacked">{{ item.created_at }}</ion-label>
+          <p>
+            {{ item.name }}<br>
+            Dente: {{ item.dent }}<br>
+            Aluno: {{ item.student.name }} ({{ item.student.code }})<br>
+          </p>
+        </ion-label>
       </ion-item>
     </ion-list>
 
