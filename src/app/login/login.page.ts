@@ -14,14 +14,13 @@ import { StorageService, LOCAL_STORAGE } from 'ngx-webstorage-service';
 @Injectable()
 export class LoginPage implements OnInit {
   credentials = {
-    email: "user@odontopront.io",
-    password: "12345678"
+    email: "",
+    password: ""
   }
 
   constructor(
     private httpService: HttpClient,
     private navCtrl: NavController,
-    public alertController: AlertController,
     private router: Router,
     @Inject(LOCAL_STORAGE) private storage: StorageService) {
   }

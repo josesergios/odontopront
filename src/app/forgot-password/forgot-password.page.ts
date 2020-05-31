@@ -15,8 +15,8 @@ import { StorageService, LOCAL_STORAGE } from 'ngx-webstorage-service';
 @Injectable()
 export class ForgotPasswordPage implements OnInit {
   credentials = {
-    email: "user@odontopront.io",
-    code: "12345678"
+    email: "",
+    code: ""
   }
 
   constructor(private httpService: HttpClient,
