@@ -11,7 +11,7 @@
 <ion-content>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="presentActionSheet()">
-      <ion-icon name="add"></ion-icon>
+      <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
@@ -451,49 +451,49 @@
     <ion-list>
       <ion-item>
         <ion-label position="stacked">Dentística:</ion-label>
-        <p>{{ record.referral.dentistry >  0 ? 'Sim' : 'Não' }}</p>
+        <p>{{ record.referral && record.referral.dentistry >  0 ? 'Sim' : 'Não' }}</p>
       </ion-item>
     </ion-list>
 
     <ion-list>
       <ion-item>
         <ion-label position="stacked">Cirurgia (Unidades):</ion-label>
-        <p>{{ record.referral.surgery > 0 ? 'Sim' : 'Não' }} ({{ record.referral.surgery }})</p>
+        <p>{{ record.referral && record.referral.surgery > 0 ? 'Sim' : 'Não' }} ({{ record.referral && record.referral.surgery ? record.referral.surgery : ' }})</p>
       </ion-item>
     </ion-list>
 
     <ion-list>
       <ion-item>
         <ion-label position="stacked">Periodontia:</ion-label>
-        <p>{{ record.referral.periodontics >  0 ? 'Sim' : 'Não' }}</p>
+        <p>{{ record.referral && record.referral.periodontics >  0 ? 'Sim' : 'Não' }}</p>
       </ion-item>
     </ion-list>
 
     <ion-list>
       <ion-item>
         <ion-label position="stacked">Radiografia (Unidades):</ion-label>
-        <p>{{ record.referral.radiography > 0 ? 'Sim' : 'Não' }} ({{ record.referral.radiography }})</p>
+        <p>{{ record.referral && record.referral.radiography > 0 ? 'Sim' : 'Não' }} ({{ record.referral && record.referral.radiography ? record.referral.radiography : ' }})</p>
       </ion-item>
     </ion-list>
 
     <ion-list>
       <ion-item>
         <ion-label position="stacked">Odontopediatria:</ion-label>
-        <p>{{ record.referral.pediatric_dentistry > 0 ? 'Sim' : 'Não' }}</p>
+        <p>{{ record.referral && record.referral.pediatric_dentistry > 0 ? 'Sim' : 'Não' }}</p>
       </ion-item>
     </ion-list>
 
     <ion-list>
       <ion-item>
         <ion-label position="stacked">Endodontia (Unidades):</ion-label>
-        <p>{{ record.referral.surgery > 0 ? 'Sim' : 'Não' }} ({{ record.referral.endodontics }})</p>
+        <p>{{ record.referral && record.referral.surgery > 0 ? 'Sim' : 'Não' }} ({{ record.referral && record.referral.endodontics ? record.referral.endodontics : '}})</p>
       </ion-item>
     </ion-list>
 
     <ion-list>
       <ion-item>
         <ion-label position="stacked">Ortodontia</ion-label>
-        <p>{{ record.referral.orthodontics > 0 ? 'Sim' : 'Não' }}</p>
+        <p>{{ record.referral && record.referral.orthodontics > 0 ? 'Sim' : 'Não' }}</p>
       </ion-item>
     </ion-list>
 

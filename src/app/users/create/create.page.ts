@@ -51,12 +51,11 @@ export class CreatePage implements OnInit {
       })
     };
 
-
     this.httpService
       .post(environment.apiurl + '/users', this.form, httpOptions).toPromise()
       .then(respose => {
-        // @ts-ignore
-        this.router.navigateByUrl('/users-list');
+        window.alert('Usuário criado com sucesso!');
+        this.navCtrl.navigateBack('/users-list');
       }).catch(error => {
       window.alert('Ocorreu um erro ao efetuar a operação, favor tentar novamente.')
     });

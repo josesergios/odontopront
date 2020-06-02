@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import {ActionSheetController, NavController} from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
@@ -16,6 +16,7 @@ export class DetailsPage implements OnInit {
 
   constructor( private navCtrl: NavController, private httpClient: HttpClient, private httpRapams: HttpParams,
     private route: ActivatedRoute,
+    public actionSheetController: ActionSheetController,
     @Inject(LOCAL_STORAGE) private storage: StorageService) {
 
   }
@@ -35,8 +36,22 @@ export class DetailsPage implements OnInit {
     })
   }
 
-  goToCreateRecords(){
-    this.navCtrl.navigateForward(`/records-create/${this.patient.id}`);
+  async presentActionSheet() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Ações',
+      buttons: [{
+        text: 'Editar',
+        handler: () => {
+          console.log('Edit clicked');
+        }
+      }, {
+        text: 'Adicionar prontuário',
+        handler: () => {
+          this.navCtrl.navigateForward(`/records-create/${this.patient.id}`);
+        }
+      }]
+    });
+    await actionSheet.present();
   }
 
   goToDetailsRecords(id){

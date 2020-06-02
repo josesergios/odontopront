@@ -6,15 +6,16 @@
       </ion-button>
     </ion-buttons>
     <ion-title class="ion-text-center">Detalhes do paciente</ion-title>
-      <ion-buttons slot="end">
-          <ion-button (click)="goToCreateRecords()">
-              <ion-icon name="add"></ion-icon>
-          </ion-button>
-      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="presentActionSheet()">
+            <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
     <ion-toolbar color="light">
         <ion-title>Informações gerais</ion-title>
     </ion-toolbar>
