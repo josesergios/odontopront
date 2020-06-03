@@ -12,6 +12,7 @@ import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 })
 export class DetailsPage implements OnInit {
   record : any;
+  id: any;
   
   constructor(
     private navCtrl: NavController,
@@ -19,7 +20,9 @@ export class DetailsPage implements OnInit {
     private route: ActivatedRoute,
     public actionSheetController: ActionSheetController,
     @Inject(LOCAL_STORAGE) private storage: StorageService
-  ) { }
+  ) {
+    this.id = this.route.snapshot.paramMap.get('id');
+  }
 
   async ngOnInit() {
     const httpOptions = {
@@ -29,9 +32,7 @@ export class DetailsPage implements OnInit {
       })
     };
 
-    let id = this.route.snapshot.paramMap.get('id');
-
-    this.httpClient.get(environment.apiurl + '/records/' + id, httpOptions).toPromise().then(response => {
+    this.httpClient.get(environment.apiurl + '/records/' + this.id, httpOptions).toPromise().then(response => {
       this.record = response;
     })
   }
@@ -47,7 +48,8 @@ export class DetailsPage implements OnInit {
       }, {
         text: 'Adicionar aferição de tensão arterial',
         handler: () => {
-          console.log('Share clicked');
+          //console.log('Share clicked');
+          this.navCtrl.navigateForward('/measurements/' + this.id);
         }
       }, {
         text: 'Adicionar procedimento',

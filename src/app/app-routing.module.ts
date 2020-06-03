@@ -60,6 +60,11 @@ const routes: Routes = [
     path: 'password',
     loadChildren: () => import('./password/password.module').then( m => m.PasswordPageModule)
   },
+  {
+    path: 'measurements/:id',
+    loadChildren: () => import('./records/measurements/measurements.module').then( m => m.MeasurementsPageModule)
+  },
+
 
 
 
