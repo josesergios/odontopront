@@ -20,8 +20,11 @@
         <img src="/assets/avatar.jpg">
       </ion-avatar>
       <ion-label>
-        <h2>{{ item.name }}</h2>
-        <p>{{ item.email}}</p>
+       
+        <h2 (click)="goToDetailsUsers(item.id)">{{ item.name }}</h2>
+        <small>{{item.email}} | {{ item.created_at }}</small>
+        <p>{{ item.main_complaint }}</p>
+
       </ion-label>
     </ion-item>
   </ion-list>

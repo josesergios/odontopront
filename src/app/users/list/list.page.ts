@@ -40,4 +40,8 @@ export class ListPage implements OnInit {
   goToCreate(){
     this.navCtrl.navigateForward('/users-create');
   }
+
+  goToDetailsUsers(id){
+    this.navCtrl.navigateForward(`/users-details/${id}`);
+  }
 }
