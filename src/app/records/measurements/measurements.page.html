@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="goToBack()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Adicionar prontuário</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ 
+  <ion-toolbar color="light">
+    <ion-title>Pessão Arterial</ion-title>
+  </ion-toolbar>
+
+  <ion-item class="ion-margin-bottom">
+    <ion-label position="stacked">Pulso (bpm):</ion-label>
+    <ion-input [(ngModel)]="form.measurement.pulse"></ion-input>
+  </ion-item>
+
+  <ion-item class="ion-margin-bottom">
+    <ion-label position="stacked">Tensão sistólica (mmHg):</ion-label>
+    <ion-input [(ngModel)]="form.measurement.systolic"></ion-input>
+  </ion-item>
+
+  <ion-item class="ion-margin-bottom">
+    <ion-label position="stacked">Tensão diastólica (mmHg):</ion-label>
+    <ion-input [(ngModel)]="form.measurement.diastolic"></ion-input>
+  </ion-item>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button color="primary" expand="block" (click)="submit()">
+      Salvar
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
+
