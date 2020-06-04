@@ -3,6 +3,7 @@ import {ActionSheetController, NavController} from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import { Record } from '../../../models/Record';
 import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 
 @Component({
@@ -11,9 +12,9 @@ import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
   styleUrls: ['./details.page.scss'],
 })
 export class DetailsPage implements OnInit {
-  record : any;
+  record : any = new Record();
   id: any;
-  
+
   constructor(
     private navCtrl: NavController,
     private httpClient: HttpClient,
@@ -32,8 +33,8 @@ export class DetailsPage implements OnInit {
       })
     };
 
-    this.httpClient.get(environment.apiurl + '/records/' + this.id, httpOptions).toPromise().then(response => {
-      this.record = response;
+    this.httpClient.get(environment.apiurl + '/records/' + this.route.snapshot.paramMap.get('id'), httpOptions).toPromise().then(response => {
+      this.record = new Record(response);
     })
   }
 
@@ -48,8 +49,7 @@ export class DetailsPage implements OnInit {
       }, {
         text: 'Adicionar aferição de tensão arterial',
         handler: () => {
-          //console.log('Share clicked');
-          this.navCtrl.navigateForward('/measurements/' + this.id);
+          this.navCtrl.navigateForward('/measurements/' + this.record.id);
         }
       }, {
         text: 'Adicionar procedimento',
