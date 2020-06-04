@@ -64,6 +64,16 @@ const routes: Routes = [
     path: 'measurements/:id',
     loadChildren: () => import('./records/measurements/measurements.module').then( m => m.MeasurementsPageModule)
   },
+  {
+    path: 'procedure/:id',
+    loadChildren: () => import('./records/procedure/procedure.module').then( m => m.ProcedurePageModule)
+  },
+  {
+    path: 'users-details/:id',
+    loadChildren: () => import('./users/details/details.module').then( m => m.DetailsPageModule)
+  },
+
+
 
 
 
