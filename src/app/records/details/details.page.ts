@@ -33,9 +33,7 @@ export class DetailsPage implements OnInit {
       })
     };
 
-    let id = this.route.snapshot.paramMap.get('id');
-
-    this.httpClient.get(environment.apiurl + '/records/' + id, httpOptions).toPromise().then(response => {
+    this.httpClient.get(environment.apiurl + '/records/' + this.route.snapshot.paramMap.get('id'), httpOptions).toPromise().then(response => {
       this.record = new Record(response);
     })
   }
@@ -51,7 +49,7 @@ export class DetailsPage implements OnInit {
       }, {
         text: 'Adicionar aferição de tensão arterial',
         handler: () => {
-          this.navCtrl.navigateForward('/measurements/' + this.id);
+          this.navCtrl.navigateForward('/measurements/' + this.record.id);
         }
       }, {
         text: 'Adicionar procedimento',
