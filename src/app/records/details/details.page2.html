@@ -1,0 +1,549 @@
+<ion-toolbar color="light">
+  <ion-title>Dados do Paciente</ion-title>
+</ion-toolbar>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Nome completo:</ion-label>
+    <p>{{ record.patient.name }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Data de Nascimento:</ion-label>
+    <p>{{ record.patient.birth_date }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Idade:</ion-label>
+    <p>{{ record.patient.age }} anos</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Sexo:</ion-label>
+    <p>{{ record.patient.gender }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Cor da pele:</ion-label>
+    <p>{{ record.patient.skin_color }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Naturalidade:</ion-label>
+    <p>{{ record.patient.birth_city }}, {{ record.patient.birth_uf }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Estado civil:</ion-label>
+    <p>{{ record.patient.marital_status }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Telefone celular:</ion-label>
+    <p>{{ record.patient.mobile }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Endereço residencial:</ion-label>
+    <p>{{ record.patient.address.street }}, {{ record.patient.address.number }} <span *ngIf="record.patient.address.complement"> -
+      {{ record.patient.address.complement }}</span> <br />
+      {{ record.patient.address.neighborhood }}, {{ record.patient.address.city }} ({{ record.patient.address.uf }}), {{ record.patient.address.postcode }}
+    </p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Telefone residencial:</ion-label>
+    <p>{{ record.patient.address.phone }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Profissão:</ion-label>
+    <p>{{ record.patient.occupation }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list *ngIf="record.patient.commercial_address">
+  <ion-item>
+    <ion-label position="stacked">Endereço comercial:</ion-label>
+    <p>{{ record.patient.commercial_address.street }}, {{ record.patient.commercial_address.number }} <span *ngIf="record.patient.commercial_address.complement"> -
+      {{ record.patient.commercial_address.complement }}</span> <br />
+      {{ record.patient.commercial_address.neighborhood }}, {{ record.patient.commercial_address.city }} ({{ record.patient.commercial_address.uf }}), {{ record.patient.commercial_address.postcode }}
+    </p>
+  </ion-item>
+</ion-list>
+
+<ion-list *ngIf="record.patient.commercial_address">
+  <ion-item>
+    <ion-label position="stacked">Telefone comercial:</ion-label>
+    <p>{{ record.patient.commercial_address.phone }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-toolbar color="light">
+  <ion-title>Anamnese</ion-title>
+</ion-toolbar>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Queixa printipal (QP):</ion-label>
+    <p>{{ record.main_complaint }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">História da doença atual (HD):</ion-label>
+    <p>{{ record.disease_history }}</p>
+  </ion-item>
+</ion-list>
+
+
+<ion-toolbar color="light">
+  <ion-title>História médica</ion-title>
+</ion-toolbar>
+
+<div  *ngFor="let item of record.answers">
+  <ion-list *ngIf="item.question.type === 'medical'">
+    <ion-item>
+      <ion-label position="stacked">{{ item.question.title }}</ion-label>
+      <p *ngIf="item.question.answer === 'boolean'">
+        {{  item.value === 1 ? 'Sim' : 'Não'  }}
+        <span *ngIf="item.observations"><br>Obs: {{ item.observations }}</span>
+      </p>
+      <p *ngIf="item.question.answer !== 'boolean'">
+        {{  item.value }}
+        <span *ngIf="item.observations"><br>Obs: {{ item.observations }}</span>
+      </p>
+    </ion-item>
+  </ion-list>
+</div>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Está fazendo uso de algum medicamento não especificado?</ion-label>
+    <p>{{  record.using_medicine  }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Há alguma outra informação que julgue necessária o informar?</ion-label>
+    <p>{{ record.other_information }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">História familiar</ion-label>
+    <p>{{ record.family_history }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">História social e psicológica</ion-label>
+    <p>{{ record.social_psychological_history }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-toolbar color="light">
+  <ion-title>História odontológica</ion-title>
+</ion-toolbar>
+
+<div  *ngFor="let item of record.answers">
+  <ion-list *ngIf="item.question.type === 'dental'">
+    <ion-item>
+      <ion-label position="stacked">{{ item.question.title }}</ion-label>
+      <p *ngIf="item.question.answer === 'boolean'">
+        {{  item.value === 1 ? 'Sim' : 'Não'  }}
+        <span *ngIf="item.observations"><br>Obs: {{ item.observations }}</span>
+      </p>
+      <p *ngIf="item.question.answer !== 'boolean'">
+        {{  item.value }}
+        <span *ngIf="item.observations"><br>Obs: {{ item.observations }}</span>
+      </p>
+    </ion-item>
+  </ion-list>
+</div>
+
+<ion-toolbar color="light">
+  <ion-title>Exame físico</ion-title>
+</ion-toolbar>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Avaliação geral:</ion-label>
+    <p>{{ record.general_evaluation }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Aferição da tensão arterial</ion-label>
+
+    <p *ngIf="record.measurements.length === 0" class="text-center">Nenhum resultado encontrado.</p>
+    <ion-grid class="ion-no-padding ion-no-margin" style="width: 100%;" *ngIf="record.measurements.length > 0">
+      <ion-row>
+        <ion-col class="ion-no-padding" size="3">
+          <ion-label position="stacked">Pulso <small>bpm</small></ion-label>
+        </ion-col>
+        <ion-col class="ion-no-padding" size="4">
+          <ion-label position="stacked">T. Arterial <small>mmHG</small></ion-label>
+        </ion-col>
+        <ion-col class="ion-no-padding" size="5">
+          <ion-label position="stacked">Data</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let item of record.measurements">
+        <ion-col class="ion-no-padding" size="3">
+          <p>{{ item.pulse }}</p>
+        </ion-col>
+        <ion-col class="ion-no-padding" size="4">
+          <p>{{ item.systolic }}/{{ item.diastolic }} </p>
+        </ion-col>
+        <ion-col class="ion-no-padding" size="5">
+          <p>{{ item.created_at }}</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Avaliação da região da cabeça e do pescoço:</ion-label>
+    <p>{{ record.head_neck_evaluation }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Linfonodos:</ion-label>
+    <p>{{ record.lymph_nodes }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-toolbar color="light">
+  <ion-title>Exame intrabucal</ion-title>
+</ion-toolbar>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Partes moles:</ion-label>
+    <p>{{ record.examination.soft_parts }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Localização da lesão:</ion-label>
+    <p>{{ record.examination.injury_location }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Tamanho:</ion-label>
+    <p>{{ record.examination.size }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Cor:</ion-label>
+    <p>{{ record.examination.color }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Forma:</ion-label>
+    <p>{{ record.examination.shape }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Inserção</ion-label>
+    <p>{{ record.examination.insertion }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Consistência:</ion-label>
+    <p>{{ record.examination.consistency }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Mobilidade:</ion-label>
+    <p>{{ record.examination.mobility }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Sinais secundários:</ion-label>
+    <p>{{ record.examination.secundary_signals }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-toolbar color="light">
+  <ion-title>Outras alterações</ion-title>
+</ion-toolbar>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Lábios:</ion-label>
+    <p>{{ record.lips }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Língua:</ion-label>
+    <p>{{ record.tongue }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Mucosa jugal:</ion-label>
+    <p>{{ record.cheek_mucous }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Gengiva:</ion-label>
+    <p>{{ record.gum }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Assoalho bucal:</ion-label>
+    <p>{{ record.oral_floor }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Palato duro:</ion-label>
+    <p>{{ record.hard_palate }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Palato mole:</ion-label>
+    <p>{{ record.soft_palate }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Orofaringe:</ion-label>
+    <p>{{ record.oropharynx }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-toolbar color="light">
+  <ion-title>Odontograma</ion-title>
+</ion-toolbar>
+
+<ion-list>
+  <ion-grid>
+    <ion-row class="ion-padding">
+      <ion-col *ngFor="let item of record.teeth" size="3">
+        <p class="ion-text-center" position="stacked">{{ item.number }}</p>
+        <p class="ion-text-center">{{ item.status }}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Observações:</ion-label>
+    <p>{{ record.observation }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Exames complementares</ion-label>
+    <p>{{ record.complementary_exams }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-toolbar color="light">
+  <ion-title>Sumário de diagnóstico:</ion-title>
+</ion-toolbar>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Suspeita clínica:</ion-label>
+    <p>{{ record.diagnostic.clinical_suspicion }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Diagnóstico Histopatológico:</ion-label>
+    <p>{{ record.diagnostic.histopathological_diagnosis }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Prognóstico:</ion-label>
+    <p>{{ record.diagnostic.prognosis }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-toolbar color="light">
+  <ion-title>Encaminhamento</ion-title>
+</ion-toolbar>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Dentística:</ion-label>
+    <p>{{ record.referral && record.referral.dentistry >  0 ? 'Sim' : 'Não' }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Cirurgia (Unidades):</ion-label>
+    <p>{{ record.referral && record.referral.surgery > 0 ? 'Sim' : 'Não' }} ({{ record.referral && record.referral.surgery ? record.referral.surgery : '' }})</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Periodontia:</ion-label>
+    <p>{{ record.referral && record.referral.periodontics >  0 ? 'Sim' : 'Não' }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Radiografia (Unidades):</ion-label>
+    <p>{{ record.referral && record.referral.radiography > 0 ? 'Sim' : 'Não' }} ({{ record.referral && record.referral.radiography ? record.referral.radiography : '' }})</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Odontopediatria:</ion-label>
+    <p>{{ record.referral && record.referral.pediatric_dentistry > 0 ? 'Sim' : 'Não' }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Endodontia (Unidades):</ion-label>
+    <p>{{ record.referral && record.referral.surgery > 0 ? 'Sim' : 'Não' }} ({{ record.referral && record.referral.endodontics ? record.referral.endodontics : ''}})</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Ortodontia</ion-label>
+    <p>{{ record.referral && record.referral.orthodontics > 0 ? 'Sim' : 'Não' }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-toolbar color="light">
+  <ion-title>Próteses</ion-title>
+</ion-toolbar>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Fixa (Unidades):</ion-label>
+    <p>{{ record.prosthesis.fixed > 0 ? 'Sim' : 'Não' }} ({{ record.prosthesis.fixed }})</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Removível superior:</ion-label>
+    <p>{{ record.prosthesis.removable_top >  0 ? 'Sim' : 'Não' }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Removível inferior:</ion-label>
+    <p>{{ record.prosthesis.removable_bottom >  0 ? 'Sim' : 'Não' }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Total superior:</ion-label>
+    <p>{{ record.prosthesis.full_top >  0 ? 'Sim' : 'Não' }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label position="stacked">Total inferior:</ion-label>
+    <p>{{ record.prosthesis.full_bottom >  0 ? 'Sim' : 'Não' }}</p>
+  </ion-item>
+</ion-list>
+
+<ion-toolbar color="light">
+  <ion-title>Procedimentos realizados</ion-title>
+</ion-toolbar>
+
+<p *ngIf="record.procedures.length === 0" class="text-center">Nenhum resultado encontrado.</p>
+<ion-list *ngIf="record.procedures.length > 0">
+  <ion-item *ngFor="let item of record.procedures">
+    <ion-label>
+      <ion-label position="stacked">{{ item.created_at }}</ion-label>
+      <p>
+        {{ item.name }}<br>
+        Dente: {{ item.dent }}<br>
+        Aluno: {{ item.student.name }} ({{ item.student.code }})<br>
+      </p>
+    </ion-label>
+  </ion-item>
+</ion-list>
+
+<ion-toolbar color="light">
+  <ion-title>Histórico de alterações</ion-title>
+</ion-toolbar>
+
+<p *ngIf="record.logs.length === 0" class="text-center">Nenhum resultado encontrado.</p>
+<ion-list *ngIf="record.logs.length > 0">
+  <ion-item *ngFor="let item of record.logs">
+    <ion-label>
+      <ion-label position="stacked">{{ item.created_at }}</ion-label>
+      <p>{{ item.user.name }} ({{ item.user.code }})</p>
+    </ion-label>
+  </ion-item>
+</ion-list>

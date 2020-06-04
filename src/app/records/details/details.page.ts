@@ -3,6 +3,7 @@ import {ActionSheetController, NavController} from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import { Record } from '../../../models/Record';
 import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 
 @Component({
@@ -11,7 +12,7 @@ import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
   styleUrls: ['./details.page.scss'],
 })
 export class DetailsPage implements OnInit {
-  record : any;
+  record : any = new Record();
   
   constructor(
     private navCtrl: NavController,
@@ -32,7 +33,8 @@ export class DetailsPage implements OnInit {
     let id = this.route.snapshot.paramMap.get('id');
 
     this.httpClient.get(environment.apiurl + '/records/' + id, httpOptions).toPromise().then(response => {
-      this.record = response;
+      this.record = new Record(response);
+      console.log(this.record)
     })
   }
 
