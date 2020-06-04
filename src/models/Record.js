@@ -87,25 +87,25 @@ export class Record {
             this.patient = new Patient(obj.patient);
         }
 
-        if (typeof obj.logs === "array") {
+        if (typeof obj.logs !== "undefined" && obj.logs.isArray()) {
             this.diagnostic = obj.logs.map(item => {
                 return new Log(item);
             })
         }
 
-        if (typeof obj.teeth === "array") {
+        if (typeof obj.teeth !== "undefined" && obj.teeth.isArray()) {
             this.teeth = obj.teeth.map(item => {
                 return new Tooth(item);
             })
         }
 
-        if (typeof obj.measurements === "array") {
+        if (typeof obj.measurements !== "undefined" && obj.measurements.isArray()) {
             this.measurements = obj.measurements.map(item => {
                 return new Measurement(item);
             })
         }
 
-        if (typeof obj.procedures === "array") {
+        if (typeof obj.procedures !== "undefined" && obj.procedures.isArray()) {
             this.procedures = obj.procedures.map(item => {
                 return new Procedure(item);
             })
