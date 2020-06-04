@@ -54,7 +54,8 @@ export class DetailsPage implements OnInit {
       }, {
         text: 'Adicionar procedimento',
         handler: () => {
-          console.log('Play clicked');
+          //console.log('Play clicked');
+          this.navCtrl.navigateForward('/procedure/' + this.id);
         }
       }]
     });
