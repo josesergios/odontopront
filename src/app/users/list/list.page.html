@@ -4,15 +4,16 @@
       <ion-menu-button auto-hide="false"></ion-menu-button>
     </ion-buttons>
     <ion-title class="ion-text-center">Usuários</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="goToCreate()">
-        <ion-icon name="add"></ion-icon>
-      </ion-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="goToCreate()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
   <p *ngIf="list.length === 0" class="text-center">Nenhum resultado encontrado.</p>
   <ion-list *ngIf="list.length > 0">
     <ion-item *ngFor="let item of list">
