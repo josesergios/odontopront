@@ -65,7 +65,7 @@ export class MeasurementsPage implements OnInit {
       };
   
       this.httpClient
-        .post(environment.apiurl + '/records-details', this.form, httpOptions).toPromise()
+        .post(environment.apiurl + '/records/' + this.id + '/measurements', this.form, httpOptions).toPromise()
         .then(respose => {
           // @ts-ignore
           this.router.navigateByUrl('/records/' + respose.id + 'measurements');

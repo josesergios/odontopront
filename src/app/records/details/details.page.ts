@@ -49,7 +49,7 @@ export class DetailsPage implements OnInit {
       }, {
         text: 'Adicionar aferição de tensão arterial',
         handler: () => {
-          this.navCtrl.navigateForward('/measurements/' + this.record.id);
+          this.navCtrl.navigateForward('/measurements/' + this.id);
         }
       }, {
         text: 'Adicionar procedimento',
