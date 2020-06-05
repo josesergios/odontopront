@@ -28,24 +28,11 @@ export class MeasurementsPage implements OnInit {
       }
 
     async ngOnInit() {
-    //   let vm = this
-    // const httpOptions = {
-    //   headers: new HttpHeaders({
-    //     'Content-Type':  'application/json',
-    //     'Authorization': 'Bearer ' + this.storage.get('auth.token')
-    //   })
-    // };
 
-    // this.httpClient.get(environment.apiurl + '/patients/' + this.id, httpOptions).toPromise().then(response => {
-    //   vm.measurement = response;
-    // })
-    console.log('this.id', this.id);
-  };
+    };
     
     goToBack(){
-      
       this.navCtrl.pop();
-      
     }
     
     submit(){
@@ -66,11 +53,12 @@ export class MeasurementsPage implements OnInit {
   
       this.httpClient
         .post(environment.apiurl + '/records/' + this.id + '/measurements', this.form, httpOptions).toPromise()
-        .then(respose => {
+        .then(() => {
           // @ts-ignore
-          this.router.navigateByUrl('/records/' + respose.id + 'measurements');
+          window.alert('Informações cadastradas com sucesso.');
+          this.navCtrl.navigateBack('/records-details/' + this.id);
         }).catch(error => {
-        window.alert('Ocorreu um erro ao efetuar a operação, favor tentar novamente.')
-      });
+          window.alert('Ocorreu um erro ao efetuar a operação, favor tentar novamentex.');
+        });
     }
 }
