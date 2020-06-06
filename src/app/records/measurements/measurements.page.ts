@@ -53,11 +53,7 @@ export class MeasurementsPage implements OnInit {
   
       this.httpClient
         .post(environment.apiurl + '/records/' + this.id + '/measurements', this.form, httpOptions).toPromise()
-<<<<<<< HEAD
-        .then(respose => {
-=======
         .then(() => {
->>>>>>> e64ff3781507b34b170760042461207a8e617c5e
           // @ts-ignore
           window.alert('Informações cadastradas com sucesso.');
           this.navCtrl.navigateBack('/records-details/' + this.id);
