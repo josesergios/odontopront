@@ -1,34 +1,105 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-button (click)="goToBack(id)">
+      <ion-button (click)="goToBack()">
         <ion-icon name="arrow-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title class="ion-text-center">Detalhes do Usuário</ion-title>
+    <ion-title class="ion-text-center">Detalhes do paciente</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="presentActionSheet()">
-      <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+    
 
-  <p *ngIf="!user" class="ion-margin-start">Nenhum resultado encontrado.</p>
-
-  <div  *ngIf="user">
     <ion-toolbar color="light">
-      <ion-title>Dados do Paciente</ion-title>
+        <ion-title>Informações gerais</ion-title>
     </ion-toolbar>
 
-    <ion-list>
-      <ion-item>
-        <ion-label position="stacked">Nome completo:</ion-label>
-        <p>{{ user.form.name }}</p>
+    <p *ngIf="!user" class="ion-margin-start">Nenhum resultado encontrado.</p>
+
+    <ion-list *ngIf="user">
+
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="presentActionSheet()">
+          <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+      <ion-item class="ion-margin-bottom">
+          <ion-label position="stacked">Nome completo:</ion-label>
+          <p>{{ user.name }}</p>
       </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+        <ion-label position="stacked">E-mail:</ion-label>
+        <p>{{ user.email }}</p>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom">
+        <ion-label position="stacked">Telefone:</ion-label>
+        <p>{{ user.phone }}</p>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom">
+        <ion-label position="stacked">Código da sala:</ion-label>
+        <p>{{ user.code }}</p>
+    </ion-item>
+
+    <!-- <ion-item class="ion-margin-bottom">
+        <ion-label position="stacked">Tipo:</ion-label>
+        <p>{{ form.type}}</p>
+    </ion-item> -->
     </ion-list>
-  </div>
 </ion-content>
 
+
+
+
+
+<!-- <ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="goToBack()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Detalhes do perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-title>Informações gerais</ion-title>
+
+<ion-content>
+    
+    <p *ngIf="!user" class="ion-margin-start">Nenhum resultado encontrado.</p>
+    
+    <ion-list *ngIf="user">
+      <ion-item class="ion-margin-bottom">
+          <ion-label position="stacked">Nome completo:</ion-label>
+          <p>{{ user.name }}</p>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+          <ion-label position="stacked">E-mail:</ion-label>
+          <p>{{ user.email }}</p>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+          <ion-label position="stacked">Telefone:</ion-label>
+          <p>{{ user.phone }}</p>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+          <ion-label position="stacked">Código da sala:</ion-label>
+          <p>{{ user.code }}</p>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+          <ion-label position="stacked">Perfil:</ion-label>
+          <p>{{ form.type}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+ -->

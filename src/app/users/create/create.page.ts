@@ -14,10 +14,10 @@ import {LOCAL_STORAGE, StorageService} from "ngx-webstorage-service";
 @Injectable()
 export class CreatePage implements OnInit {
   form = {
-    name: "",
-    email: "",
-    phone: "",
-    code: "",
+    name: null,
+    email: null,
+    phone: null,
+    code: null,
     type: null
   }
 
@@ -32,7 +32,7 @@ export class CreatePage implements OnInit {
   }
 
   goToBack(){
-    this.navCtrl.navigateBack('/users-list');
+    this.navCtrl.pop();
   }
 
   submit(){
@@ -55,9 +55,10 @@ export class CreatePage implements OnInit {
       .post(environment.apiurl + '/users', this.form, httpOptions).toPromise()
       .then(respose => {
         window.alert('Usuário criado com sucesso!');
-        this.navCtrl.navigateBack('/users-list');
+        window.location.href="/users-list";
       }).catch(error => {
-      window.alert('Ocorreu um erro ao efetuar a operação, favor tentar novamente.')
+      window.alert('Ocorreu um erro ao efetuar a operação, favor tentar novamente.');
+      window.location.href="/users-list";
     });
   }
-}
+} 
