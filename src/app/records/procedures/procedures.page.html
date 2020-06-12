@@ -10,30 +10,30 @@
 </ion-header>
 
 <ion-content>
- 
-  <ion-toolbar color="light">
-    <ion-title>Procedimentos</ion-title>
-  </ion-toolbar>
-
   <ion-item class="ion-margin-bottom">
     <ion-label position="stacked">Nome:</ion-label>
     <ion-input [(ngModel)]="form.name"></ion-input>
   </ion-item>
 
   <ion-item class="ion-margin-bottom">
-    <ion-label position="stacked">Dentes:</ion-label>
+    <ion-label position="stacked">Dente:</ion-label>
     <ion-input [(ngModel)]="form.dent"></ion-input>
   </ion-item>
 
   <ion-item class="ion-margin-bottom">
     <ion-label position="stacked">Estudante:</ion-label>
-    <ion-input [(ngModel)]="form.student_id"></ion-input>
+    <ion-select interface="action-sheet" [(ngModel)]="form.student_id">
+      <ion-select-option *ngFor="let item of students" [value]="item.id">{{ item.name }}</ion-select-option>
+    </ion-select>
   </ion-item>
 
   <ion-item class="ion-margin-bottom">
     <ion-label position="stacked">Professor:</ion-label>
-    <ion-input [(ngModel)]="form.teacher_id"></ion-input>
+    <ion-select interface="action-sheet" [(ngModel)]="form.teacher_id">
+      <ion-select-option *ngFor="let item of teachers" value="{{item.id}}">{{ item.name }}</ion-select-option>
+    </ion-select>
   </ion-item>
+</ion-content>
 
 <ion-footer>
   <ion-toolbar>

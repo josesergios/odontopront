@@ -14,11 +14,11 @@ export class Procedure {
         this.student = new User();
         this.teacher = new User();
 
-        if(typeof obj.student !== "undefined" && obj.student.isArray()){
+        if(typeof obj.student !== "undefined"){
             this.student = new User(obj.student)
         }
 
-        if(typeof obj.teacher !== "undefined" && obj.teacher.isArray()){
+        if(typeof obj.teacher !== "undefined"){
             this.teacher = new User(obj.teacher)
         }
     }

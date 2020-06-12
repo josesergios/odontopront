@@ -14,6 +14,7 @@ import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 export class DetailsPage implements OnInit {
   record : any = new Record();
   id: any;
+  scope: any = 'details';
 
   constructor(
     private navCtrl: NavController,
@@ -25,17 +26,21 @@ export class DetailsPage implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
   }
 
-  async ngOnInit() {
+  ionViewWillEnter() {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
-        'Authorization': 'Bearer ' + await this.storage.get('auth.token')
+        'Authorization': 'Bearer ' + this.storage.get('auth.token')
       })
     };
 
     this.httpClient.get(environment.apiurl + '/records/' + this.route.snapshot.paramMap.get('id'), httpOptions).toPromise().then(response => {
       this.record = new Record(response);
     })
+  }
+
+  async ngOnInit() {
+
   }
 
   async presentActionSheet() {
@@ -54,13 +59,19 @@ export class DetailsPage implements OnInit {
       }, {
         text: 'Adicionar procedimento',
         handler: () => {
-          //console.log('Play clicked');
-          this.navCtrl.navigateForward('/procedure/' + this.id);
+          this.navCtrl.navigateForward('/procedures/' + this.id);
+        }
+      }, {
+        text: 'Enviar arquivo',
+        handler: () => {
+          this.navCtrl.navigateForward('/files/' + this.id);
         }
       }]
     });
     await actionSheet.present();
   }
+
+  scopeChanged(event){}
 
   goToBack(){
     this.navCtrl.navigateBack('/records-list');

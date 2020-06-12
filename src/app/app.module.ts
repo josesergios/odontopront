@@ -1,6 +1,5 @@
 import {ErrorHandler, Injectable, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
 import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -14,7 +13,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { StorageServiceModule } from 'ngx-webstorage-service';
 
 import { NgxMaskIonicModule } from 'ngx-mask-ionic';
-import * as Sentry from "@sentry/browser";
 
 @NgModule({
   declarations: [AppComponent],

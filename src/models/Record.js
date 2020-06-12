@@ -7,6 +7,7 @@ import {Log} from "./Log";
 import {Tooth} from "./Tooth";
 import {Measurement} from "./Measurement";
 import {Procedure} from "./Procedure";
+import {File} from "./File";
 
 export class Record {
     constructor(obj) {
@@ -57,10 +58,11 @@ export class Record {
         this.social_psychological_history = obj.social_psychological_history || null;
         this.soft_palate = obj.soft_palate || null;
 
-        this.logs = [];
+        this.files = [];
         this.teeth = [];
         this.measurements = [];
         this.procedures = [];
+        this.logs = [];
 
         this.diagnostic = new Diagnostic();
         if (typeof obj.diagnostic !== "undefined") {
@@ -87,9 +89,9 @@ export class Record {
             this.patient = new Patient(obj.patient);
         }
 
-        if (typeof obj.logs !== "undefined") {
-            this.diagnostic = obj.logs.map(item => {
-                return new Log(item);
+        if (typeof obj.files !== "undefined") {
+            this.files = obj.files.map(item => {
+                return new File(item);
             })
         }
 
@@ -110,6 +112,12 @@ export class Record {
                 return new Procedure(item);
             })
 
+        }
+
+        if (typeof obj.logs !== "undefined") {
+            this.logs = obj.logs.map(item => {
+                return new Log(item);
+            })
         }
     }
 

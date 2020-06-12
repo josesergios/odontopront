@@ -6,19 +6,22 @@ import { environment } from '../../../environments/environment';
 import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 
 @Component({
-  selector: 'app-procedure',
-  templateUrl: './procedure.page.html',
-  styleUrls: ['./procedure.page.scss'],
+  selector: 'app-procedures',
+  templateUrl: './procedures.page.html',
+  styleUrls: ['./procedures.page.scss'],
 })
-export class ProcedurePage implements OnInit {
+export class ProceduresPage implements OnInit {
   id: any;
 
-    form = {
-      student_id: null,
-      teacher_id: null,
-      dent: null,        
-      name: null
-    }
+  students: [];
+  teachers: [];
+
+  form = {
+    student_id: null,
+    teacher_id: null,
+    dent: null,
+    name: null
+  }
 
   constructor( private navCtrl: NavController,
       private httpClient: HttpClient,
@@ -28,6 +31,28 @@ export class ProcedurePage implements OnInit {
       }
 
   ngOnInit() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer ' + this.storage.get('auth.token')
+      })
+    };
+
+    this.httpClient
+      .get(environment.apiurl + '/users', httpOptions).toPromise()
+      .then(respose => {
+        this.students = respose.filter((item) => {
+          return item.type === 'student';
+        })
+
+        console.log(this.students)
+
+        this.teachers = respose.filter((item) => {
+          return item.type === 'teacher';
+        })
+
+        console.log(this.teachers)
+      });
   }
 
   goToBack(){
@@ -63,4 +88,3 @@ export class ProcedurePage implements OnInit {
       });
   }
 }
-
